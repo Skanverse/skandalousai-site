@@ -86,6 +86,9 @@
   <section class="hero container">
     <h1 class="glitch" data-text="7-DAY IDENTITY POSSESSION">7-DAY IDENTITY POSSESSION</h1>
     <p>Enter <strong>Deathwish</strong> — a week‑long ritual where we burn your ego <em>in public</em>, force you to ship ugly, and let chaos pay your rent.</p>
+    <p id="soulsWrap" style="font-size:1.35rem;margin-top:-.5rem;opacity:.85">
+      <span id="soulsCount" style="font-weight:700">–</span> souls pledged
+    </p>
     <button id="openWaitlist" class="cta-btn pulse">Start the Deathwish 🔥</button>
   </section>
 
@@ -149,7 +152,35 @@
     // Waitlist success event
     document.addEventListener('waitlist:success',()=>{
       if(typeof gtag==='function') gtag('event','waitlist_signup');
+      fetchSouls();
     });
+
+    /* Souls counter */
+    const soulsEl  = document.getElementById('soulsCount');
+    const listId   = 30058;
+    let currentSouls = 0;
+
+    async function fetchSouls(){
+      try{
+        const r = await fetch(`https://getwaitlist.com/api/v1/waitlists/${listId}/count`);
+        const {count} = await r.json();
+        animateSouls(count);
+      }catch(e){console.error('souls fetch',e);} }
+
+    function animateSouls(target){
+      const start=currentSouls;
+      const diff=target-start;
+      const steps=12, inc=diff/steps;
+      let i=0;
+      const t=setInterval(()=>{
+        i++;currentSouls=Math.round(start+inc*i);
+        soulsEl.textContent=currentSouls.toLocaleString();
+        if(i>=steps){clearInterval(t);currentSouls=target;soulsEl.textContent=target.toLocaleString();}
+      },70);
+    }
+
+    fetchSouls();
+    setInterval(fetchSouls,30000);
   </script>
 </body>
 </html>
