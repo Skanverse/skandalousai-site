@@ -118,16 +118,35 @@
     <p>&copy; 2025 SKANverse Inc.</p>
   </footer>
 
-  <!-- MODAL JS & CTA pulse observer -->
-  <script>
-    const modal=document.getElementById('waitlistModal');
-    const dialog=document.querySelector('.modal-dialog');
-    const openBtn=document.getElementById('openWaitlist');
-    const closeBtn=document.querySelector('.modal-close');
-    const backdrop=document.querySelector('.modal-backdrop');
+ <!-- MODAL JS & CTA pulse observer -->
+<script>
+  const modal   = document.getElementById('waitlistModal');
+  const openBtn = document.getElementById('openWaitlist');
+  const closeBtn= modal.querySelector('.modal-close');
+  const backdrop= modal.querySelector('.modal-backdrop');
 
-    const openModal=()=>{modal.style.display='block';modal.classList.add('show');document.body.classList.add('modal-open');if(typeof gtag==='function') gtag('event','waitlist_open');};
-    const closeModal=()=>{modal.style.display='none';modal.classList.remove('show');document.body.classList.remove('modal-open');};
+  function openModal(){
+    modal.style.display = 'block';
+    requestAnimationFrame(()=> modal.classList.add('show'));   // trigger CSS transition
+    document.body.classList.add('modal-open');
+    if (typeof gtag === 'function') gtag('event', 'waitlist_open');
+  }
 
-    openBtn.addEventListener('click',e=>{e.preventDefault();openModal();});
-    closeBtn
+  function closeModal(){
+    modal.classList.remove('show');
+    document.body.classList.remove('modal-open');
+    setTimeout(()=>{ modal.style.display = 'none'; }, 160);    // wait for transition
+  }
+
+  openBtn.addEventListener('click', e => { e.preventDefault(); openModal(); });
+  closeBtn.addEventListener('click', closeModal);
+  backdrop.addEventListener('click', closeModal);
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+  // GetWaitlist fires this after a successful signup
+  document.addEventListener('waitlist:success', () => {
+    if (typeof gtag === 'function') gtag('event', 'waitlist_signup');
+    closeModal();
+  });
+</script>
+
