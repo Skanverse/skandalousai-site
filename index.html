@@ -5,173 +5,121 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>SKANdalousAI – 7‑Day Identity Possession</title>
 
-  <!-- Google Fonts (optional) -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
-
-  <!-- Global styles  -->
+  <!-- FONTS & RESET -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@400;500;700&display=swap" rel="stylesheet" />
   <style>
-    :root {
-      --accent: #ff3d57;    /* neon red */
-      --bg: #000;
-      --fg: #ffffff;
-    }
+    /* -------- BASE STYLES -------- */
+    *,*:before,*:after{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{font-family:'Inter',sans-serif;background:#000;color:#fff;line-height:1.5;-webkit-font-smoothing:antialiased}
+    a{color:#ff3d3d;text-decoration:none}
+    h1,h2,h3{font-family:'Playfair Display',serif;font-weight:900;letter-spacing:-.5px}
+    h1{font-size:clamp(2.5rem,5vw,4rem);line-height:1.1}
+    h2{font-size:2rem;margin-top:3rem}
+    p{margin:1rem 0;font-size:1.05rem;color:#d1d1d1}
+    .container{width:min(90%,1100px);margin-inline:auto;padding:4rem 0}
 
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body {
-      margin: 0;
-      font-family: 'Inter', sans-serif;
-      background: var(--bg);
-      color: var(--fg);
-      line-height: 1.45;
-    }
+    /* -------- HERO SECTION -------- */
+    .hero{display:flex;flex-direction:column;align-items:center;text-align:center;gap:2rem;padding:6rem 0}
+    .glitch{position:relative;color:#fff}
+    .glitch:before,.glitch:after{content:attr(data-text);position:absolute;top:0;left:0;width:100%;opacity:.8}
+    .glitch:before{left:2px;text-shadow:-2px 0 #ff3d3d;animation:glitch 2s infinite linear alternate-reverse}
+    .glitch:after{left:-2px;text-shadow:-2px 0 #b36bff;animation:glitch 1.5s infinite linear alternate-reverse}
+    @keyframes glitch{0%{clip-path:inset(0 0 90% 0)}20%{clip-path:inset(15% 0 70% 0)}40%{clip-path:inset(50% 0 30% 0)}60%{clip-path:inset(80% 0 5% 0)}80%{clip-path:inset(30% 0 55% 0)}100%{clip-path:inset(0 0 90% 0)}}
+    .cta-btn{display:inline-block;background:#ff3d3d;color:#fff;padding:.9rem 2rem;border-radius:8px;font-weight:700;transition:transform .25s;border:none;cursor:pointer}
+    .cta-btn:hover{transform:translateY(-4px)}
 
-    /* -------- HERO -------- */
-    .hero.container {
-      text-align: center;
-      padding: 12vh 1rem 8vh;
-      max-width: 900px;
-      margin: 0 auto;
-    }
+    /* -------- SECTIONS -------- */
+    .grid{display:grid;gap:2rem}
+    .three-col{grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
+    .card{background:#111;border:1px solid #333;border-radius:16px;padding:2rem;text-align:center}
+    .card h3{margin-bottom:.5rem}
 
-    .glitch {
-      font-size: clamp(2.8rem, 6vw + 1rem, 5rem);
-      font-weight: 800;
-      position: relative;
-      color: var(--fg);
-    }
-    /* quick glitch shadow */
-    .glitch::after {
-      content: attr(data-text);
-      position: absolute; left: 2px; top: 2px;
-      color: var(--accent);
-      mix-blend-mode: difference;
-      clip-path: inset(0 0 45% 0);
-      animation: glitch 1.5s infinite alternate-reverse;
-    }
-    @keyframes glitch { 0% { transform: translate(0); } 100% { transform: translate(-2px, -3px); } }
-
-    .cta-btn {
-      display: inline-block;
-      margin-top: 3rem;
-      padding: 1rem 2.5rem;
-      background: var(--accent);
-      color: #fff;
-      border: none;
-      border-radius: 12px;
-      font-size: 1.1rem;
-      font-weight: 600;
-      cursor: pointer;
-      transition: transform .15s ease, box-shadow .15s ease;
-    }
-    .cta-btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 20px rgba(255, 61, 87, .45);
-    }
+    /* -------- FOOTER -------- */
+    footer{padding:4rem 0;border-top:1px solid #111;text-align:center;font-size:.85rem;color:#777}
 
     /* -------- MODAL -------- */
-    .modal { display: none; position: fixed; inset: 0; z-index: 1000; }
-
-    .modal-backdrop {
-      position: absolute; inset: 0;
-      background: #0008; /* translucent black */
-      backdrop-filter: blur(4px);
-    }
-
-    .modal-dialog {
-      position: relative; z-index: 2;
-      max-width: 640px; width: 90%;
-      margin: 6vh auto; padding: 2rem 1rem;
-      background: #000; border-radius: 18px;
-      box-shadow: 0 0 24px rgba(255, 61, 87, 0.45);
-    }
-
-    .modal-close {
-      position: absolute; top: 8px; right: 12px;
-      background: none; border: none;
-      color: var(--fg); font-size: 1.75rem;
-      cursor: pointer;
-    }
-
-    body.modal-open { overflow: hidden; }
-
-    /* Blend the iframe (keep widget visible) */
-    #getWaitlistContainer iframe {
-      background: transparent !important;
-      border: none !important;
-      width: 100% !important;
-      min-height: 360px !important;
-    }
-
-    /* utility */
-    p { margin: 0.5rem 0 0; }
+    .modal{display:none;position:fixed;inset:0;z-index:1000}
+    .modal-backdrop{position:absolute;inset:0;background:#0008;backdrop-filter:blur(4px)}
+    .modal-dialog{position:relative;z-index:2;max-width:640px;width:90%;margin:6vh auto;padding:2rem 1rem;background:#000;border-radius:18px;box-shadow:0 0 24px rgba(255,61,61,.45)}
+    .modal-close{position:absolute;top:8px;right:12px;background:none;border:none;color:#fff;font-size:1.75rem;cursor:pointer}
+    body.modal-open{overflow:hidden}
+    #getWaitlistContainer iframe{background:transparent!important;border:none!important;width:100%!important;min-height:360px!important}
   </style>
 </head>
 <body>
-  <!-- HERO SECTION -->
+  <!-- HERO -->
   <section class="hero container">
     <h1 class="glitch" data-text="7‑DAY IDENTITY POSSESSION">7‑DAY IDENTITY POSSESSION</h1>
     <p>Enter <strong>Deathwish</strong> — a week‑long ritual where we burn your ego <em>in public</em>, force you to ship ugly, and let chaos pay your rent.</p>
     <button id="openWaitlist" class="cta-btn">Start the Deathwish 🔥</button>
   </section>
 
-  <!-- WAIT‑LIST MODAL (hidden until opened) -->
+  <!-- WAITLIST MODAL -->
   <div id="waitlistModal" class="modal">
     <div class="modal-backdrop"></div>
-
     <div class="modal-dialog">
       <button class="modal-close" aria-label="Close">✖</button>
-
-      <!-- GetWaitlist widget (dark preset) -->
-      <div id="getWaitlistContainer"
-           data-waitlist_id="30058"
-           data-widget_type="WIDGET_5"></div>
+      <div id="getWaitlistContainer" data-waitlist_id="30058" data-widget_type="WIDGET_5"></div>
     </div>
   </div>
 
-  <!-- GetWaitlist assets MUST load after the div so the script can find it -->
+  <!-- WHAT YOU GET -->
+  <section class="container">
+    <h2>What You Get in 7 Days</h2>
+    <div class="grid three-col">
+      <div class="card"><h3>Dare Pack</h3><p>7 ego‑crushing tasks delivered daily to your inbox at 9 AM IST.</p></div>
+      <div class="card"><h3>Proof Ritual</h3><p>Upload your chaos receipts to the cult wall for instant dopamine & social clout.</p></div>
+      <div class="card"><h3>Digital Rebirth</h3><p>Walk out with a new persona, audience momentum, and your first ₹ earned.</p></div>
+    </div>
+  </section>
+
+  <!-- PROOF PLACEHOLDER -->
+  <section class="container" id="proof">
+    <h2>Chaos Receipts</h2>
+    <p>(Real screenshots from our beta cult. Carousel coming soon.)</p>
+  </section>
+
+  <!-- DISCLAIMER SECTION -->
+  <section class="container" style="text-align:center;padding-bottom:6rem;">
+    <p style="margin-top:1rem;font-size:.85rem;color:#777">We value mischief. Your email won’t be sold — just possessed.</p>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 SKANverse Inc. • Built in chaos • <a href="#">Cult Lore</a> • <a href="#">Terms</a></p>
+  </footer>
+
+  <!-- GetWaitlist assets (must load AFTER the container div) -->
   <link rel="stylesheet" href="https://getwaitlist.com/styles/widget.css" />
   <script src="https://getwaitlist.com/js/widget.js" defer></script>
 
-  <!-- MODAL CONTROLLER -->
+  <!-- MODAL LOGIC -->
   <script>
-    const modal      = document.getElementById('waitlistModal');
-    const openBtn    = document.getElementById('openWaitlist');
-    const closeBtn   = document.querySelector('.modal-close');
-    const backdrop   = document.querySelector('.modal-backdrop');
+    const modal    = document.getElementById('waitlistModal');
+    const openBtn  = document.getElementById('openWaitlist');
+    const closeBtn = document.querySelector('.modal-close');
+    const backdrop = document.querySelector('.modal-backdrop');
 
-    function openModal() {
+    function openModal(){
       modal.style.display = 'block';
       document.body.classList.add('modal-open');
     }
-    function closeModal() {
+    function closeModal(){
       modal.style.display = 'none';
       document.body.classList.remove('modal-open');
     }
 
-    openBtn.addEventListener('click', e => { e.preventDefault(); openModal(); });
-    closeBtn.addEventListener('click', closeModal);
-    backdrop.addEventListener('click', closeModal);
+    openBtn.addEventListener('click',e=>{e.preventDefault();openModal();});
+    closeBtn.addEventListener('click',closeModal);
+    backdrop.addEventListener('click',closeModal);
 
-    // GA4 event (optional) + autoclose after successful signup
-    document.addEventListener('waitlist:success', () => {
-      if (typeof gtag === 'function') {
-        gtag('event', 'waitlist_signup');
-      }
+    document.addEventListener('waitlist:success',()=>{
+      if(typeof gtag==='function') gtag('event','waitlist_signup');
       closeModal();
     });
   </script>
 
-  <!-- GA4 snippet placeholder (optional) -->
-  <!--
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXX"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);} gtag('js', new Date());
-    gtag('config', 'G-XXXXXXX');
-  </script>
-  -->
 </body>
 </html>
