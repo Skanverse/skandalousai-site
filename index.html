@@ -9,29 +9,32 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@400;500;700&display=swap" rel="stylesheet" />
+
   <style>
-    /* -------- BASE STYLES -------- */
+    /* -------- BASE -------- */
     *,*:before,*:after{box-sizing:border-box;margin:0;padding:0}
     html{scroll-behavior:smooth}
     body{font-family:'Inter',sans-serif;background:#000;color:#fff;line-height:1.5;-webkit-font-smoothing:antialiased}
     a{color:#ff3d3d;text-decoration:none}
+
     h1,h2,h3{font-family:'Playfair Display',serif;font-weight:900;letter-spacing:-.5px}
     h1{font-size:clamp(2.5rem,5vw,4rem);line-height:1.1}
     h2{font-size:2rem;margin-top:3rem}
     p{margin:1rem 0;font-size:1.05rem;color:#d1d1d1}
     .container{width:min(90%,1100px);margin-inline:auto;padding:4rem 0}
 
-    /* -------- HERO SECTION -------- */
+    /* -------- HERO -------- */
     .hero{display:flex;flex-direction:column;align-items:center;text-align:center;gap:2rem;padding:6rem 0}
     .glitch{position:relative;color:#fff}
     .glitch:before,.glitch:after{content:attr(data-text);position:absolute;top:0;left:0;width:100%;opacity:.8}
-    .glitch:before{left:2px;text-shadow:-2px 0 #ff3d3d;animation:glitch 2s infinite linear alternate-reverse}
-    .glitch:after{left:-2px;text-shadow:-2px 0 #b36bff;animation:glitch 1.5s infinite linear alternate-reverse}
-    @keyframes glitch{0%{clip-path:inset(0 0 90% 0)}20%{clip-path:inset(15% 0 70% 0)}40%{clip-path:inset(50% 0 30% 0)}60%{clip-path:inset(80% 0 5% 0)}80%{clip-path:inset(30% 0 55% 0)}100%{clip-path:inset(0 0 90% 0)}}
-    .cta-btn{display:inline-block;background:#ff3d3d;color:#fff;padding:.9rem 2rem;border-radius:8px;font-weight:700;transition:transform .25s;border:none;cursor:pointer}
+    .glitch:before{left:2px;text-shadow:-2px 0 #ff3d3d;animation:gl1 2s infinite alternate-reverse linear}
+    .glitch:after{left:-2px;text-shadow:-2px 0 #b36bff;animation:gl1 1.5s infinite alternate-reverse linear}
+    @keyframes gl1{0%{clip-path:inset(0 0 90% 0)}20%{clip-path:inset(15% 0 70% 0)}40%{clip-path:inset(50% 0 30% 0)}60%{clip-path:inset(80% 0 5% 0)}80%{clip-path:inset(30% 0 55% 0)}100%{clip-path:inset(0 0 90% 0)}}
+
+    .cta-btn{display:inline-block;background:#ff3d3d;color:#fff;padding:.9rem 2rem;border-radius:8px;font-weight:700;border:none;cursor:pointer;transition:transform .25s}
     .cta-btn:hover{transform:translateY(-4px)}
 
-    /* -------- SECTIONS -------- */
+    /* -------- GRID -------- */
     .grid{display:grid;gap:2rem}
     .three-col{grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
     .card{background:#111;border:1px solid #333;border-radius:16px;padding:2rem;text-align:center}
@@ -46,7 +49,8 @@
     .modal-dialog{position:relative;z-index:2;max-width:640px;width:90%;margin:6vh auto;padding:2rem 1rem;background:#000;border-radius:18px;box-shadow:0 0 24px rgba(255,61,61,.45)}
     .modal-close{position:absolute;top:8px;right:12px;background:none;border:none;color:#fff;font-size:1.75rem;cursor:pointer}
     body.modal-open{overflow:hidden}
-    #getWaitlistContainer iframe{background:transparent!important;border:none!important;width:100%!important;min-height:360px!important}
+
+    #getWaitlistContainer iframe{border:none!important;width:100%!important;min-height:360px!important}
   </style>
 </head>
 <body>
@@ -57,12 +61,13 @@
     <button id="openWaitlist" class="cta-btn">Start the Deathwish 🔥</button>
   </section>
 
-  <!-- WAITLIST MODAL -->
+  <!-- MODAL -->
   <div id="waitlistModal" class="modal">
     <div class="modal-backdrop"></div>
     <div class="modal-dialog">
       <button class="modal-close" aria-label="Close">✖</button>
-      <div id="getWaitlistContainer" data-waitlist_id="30058" data-widget_type="WIDGET_5"></div>
+      <!-- GetWaitlist Widget (light preset) -->
+      <div id="getWaitlistContainer" data-waitlist_id="30058" data-widget_type="WIDGET_1"></div>
     </div>
   </div>
 
@@ -76,13 +81,12 @@
     </div>
   </section>
 
-  <!-- PROOF PLACEHOLDER -->
+  <!-- PROOF placeholder -->
   <section class="container" id="proof">
     <h2>Chaos Receipts</h2>
     <p>(Real screenshots from our beta cult. Carousel coming soon.)</p>
   </section>
 
-  <!-- DISCLAIMER SECTION -->
   <section class="container" style="text-align:center;padding-bottom:6rem;">
     <p style="margin-top:1rem;font-size:.85rem;color:#777">We value mischief. Your email won’t be sold — just possessed.</p>
   </section>
@@ -91,25 +95,19 @@
     <p>&copy; 2025 SKANverse Inc. • Built in chaos • <a href="#">Cult Lore</a> • <a href="#">Terms</a></p>
   </footer>
 
-  <!-- GetWaitlist assets (must load AFTER the container div) -->
+  <!-- GetWaitlist assets -->
   <link rel="stylesheet" href="https://getwaitlist.com/styles/widget.css" />
   <script src="https://getwaitlist.com/js/widget.js" defer></script>
 
-  <!-- MODAL LOGIC -->
+  <!-- MODAL JS -->
   <script>
-    const modal    = document.getElementById('waitlistModal');
-    const openBtn  = document.getElementById('openWaitlist');
-    const closeBtn = document.querySelector('.modal-close');
-    const backdrop = document.querySelector('.modal-backdrop');
+    const modal   = document.getElementById('waitlistModal');
+    const openBtn = document.getElementById('openWaitlist');
+    const closeBtn= document.querySelector('.modal-close');
+    const backdrop= document.querySelector('.modal-backdrop');
 
-    function openModal(){
-      modal.style.display = 'block';
-      document.body.classList.add('modal-open');
-    }
-    function closeModal(){
-      modal.style.display = 'none';
-      document.body.classList.remove('modal-open');
-    }
+    const openModal = () => { modal.style.display='block'; document.body.classList.add('modal-open'); };
+    const closeModal= () => { modal.style.display='none'; document.body.classList.remove('modal-open'); };
 
     openBtn.addEventListener('click',e=>{e.preventDefault();openModal();});
     closeBtn.addEventListener('click',closeModal);
@@ -120,6 +118,5 @@
       closeModal();
     });
   </script>
-
 </body>
 </html>
