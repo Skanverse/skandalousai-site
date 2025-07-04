@@ -68,12 +68,12 @@
     <div class="modal-dialog">
       <button class="modal-close" aria-label="Close">✖</button>
 
-      <!-- Waitlist assets MUST come before the container per official docs -->
-      <link rel="stylesheet" href="https://getwaitlist.com/styles/widget.css" />
-      <script src="https://getwaitlist.com/js/widget.js"></script>
-
-      <!-- The widget container  -->
+      <!-- Waitlist container -->
       <div id="getWaitlistContainer" data-waitlist_id="30058" data-widget_type="WIDGET_1"></div>
+
+      <!-- Waitlist assets AFTER container so script finds it, use defer -->
+      <link rel="stylesheet" href="https://getwaitlist.com/styles/widget.css" />
+      <script src="https://getwaitlist.com/js/widget.js" defer></script>
     </div>
   </div>
 
