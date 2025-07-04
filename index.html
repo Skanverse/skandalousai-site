@@ -127,11 +127,11 @@
   <!-- Modal controller & analytics events -->
   <script>
     const modal   = document.getElementById('waitlistModal');
-    const dialog  = modal.querySelector('.modal-dialog');
     const openBtn = document.getElementById('openWaitlist');
     const closeBtn= modal.querySelector('.modal-close');
     const backdrop= modal.querySelector('.modal-backdrop');
 
+    /* -------- MODAL HANDLERS -------- */
     function openModal(){
       modal.style.display='block';
       requestAnimationFrame(()=>modal.classList.add('show'));
@@ -144,18 +144,12 @@
       setTimeout(()=>modal.style.display='none',160);
     }
 
-    openBtn.addEventListener('click',e=>{e.preventDefault();openModal();});
-    closeBtn.addEventListener('click',closeModal);
-    backdrop.addEventListener('click',closeModal);
-    document.addEventListener('keydown',e=>{if(e.key==='Escape') closeModal();});
+    openBtn.addEventListener('click', e=>{ e.preventDefault(); openModal(); });
+    closeBtn.addEventListener('click', closeModal);
+    backdrop.addEventListener('click', closeModal);
+    document.addEventListener('keydown', e=>{ if(e.key==='Escape') closeModal(); });
 
-    // Waitlist success event
-    document.addEventListener('waitlist:success',()=>{
-      if(typeof gtag==='function') gtag('event','waitlist_signup');
-      fetchSouls();
-    });
-
-    /* Souls counter */
+    /* -------- SOULS COUNTER -------- */
     const soulsEl  = document.getElementById('soulsCount');
     const listId   = 30058;
     let currentSouls = 0;
@@ -165,22 +159,33 @@
         const r = await fetch(`https://getwaitlist.com/api/v1/waitlists/${listId}/count`);
         const {count} = await r.json();
         animateSouls(count);
-      }catch(e){console.error('souls fetch',e);} }
-
-    function animateSouls(target){
-      const start=currentSouls;
-      const diff=target-start;
-      const steps=12, inc=diff/steps;
-      let i=0;
-      const t=setInterval(()=>{
-        i++;currentSouls=Math.round(start+inc*i);
-        soulsEl.textContent=currentSouls.toLocaleString();
-        if(i>=steps){clearInterval(t);currentSouls=target;soulsEl.textContent=target.toLocaleString();}
-      },70);
+      }catch(err){ console.error('souls fetch', err); }
     }
 
+    function animateSouls(target){
+      const start = currentSouls;
+      const diff  = target - start;
+      const steps = 12;
+      const inc   = diff / steps;
+      let i = 0;
+      const tick = setInterval(()=>{
+        i++;
+        currentSouls = Math.round(start + inc * i);
+        soulsEl.textContent = currentSouls.toLocaleString();
+        if(i >= steps){ clearInterval(tick); currentSouls = target; bodies = null; }
+      }, 70);
+    }
+
+    // first load & every 30 s
     fetchSouls();
-    setInterval(fetchSouls,30000);
+    setInterval(fetchSouls, 30000);
+
+    // optimistic bump on signup
+    document.addEventListener('waitlist:success', ()=>{
+      currentSouls++;
+      soulsEl.textContent = currentSouls.toLocaleString();
+      if(typeof gtag==='function') gtag('event','waitlist_signup');
+    });
   </script>
 </body>
 </html>
