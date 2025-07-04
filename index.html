@@ -118,9 +118,16 @@
     /* souls counter */
     const soulsEl=document.getElementById('soulsCount');let currentSouls=0;const listId=30058;
 
-    async function apiFetchSouls(){try{const r=await fetch(`https://getwaitlist.com/api/v1/waitlists/${listId}`);if(r.ok){constconst { waitlist } = await r.json();
-if (waitlist && waitlist.count) updateSouls(waitlist.count);
-;updateSouls(count);}}catch(e){console.warn('api souls',e);}}
+    async function apiFetchSouls(){
+      try{
+        const r = await fetch(`https://getwaitlist.com/api/v1/waitlists/${listId}`);
+        if(!r.ok) throw new Error(r.status);
+        const data = await r.json();
+        if(data && data.waitlist && data.waitlist.count){
+          updateSouls(data.waitlist.count);
+        }
+      }catch(e){console.warn('api souls', e);}
+    }(e){console.warn('api souls',e);}}
     function updateSouls(n){if(!n||n===currentSouls) return;currentSouls=n;soulsEl.textContent=n.toLocaleString();}
 
     // fallback: scrape DOM inside widget
