@@ -180,9 +180,13 @@
     fetchSouls();
     setInterval(fetchSouls, 30000);
 
-    // optimistic bump on signup
-    document.addEventListener('waitlist:success', ()=>{
-      currentSouls++;
+    // handle signup success – use count from event if provided, else bump by one
+    document.addEventListener('waitlist:success', e=>{
+      if(e.detail && e.detail.waitlist && e.detail.waitlist.count){
+        currentSouls = e.detail.waitlist.count;
+      }else{
+        currentSouls++;
+      }
       soulsEl.textContent = currentSouls.toLocaleString();
       if(typeof gtag==='function') gtag('event','waitlist_signup');
     });
