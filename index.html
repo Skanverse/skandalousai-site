@@ -40,24 +40,25 @@
     .card{background:#111;border:1px solid #333;border-radius:16px;padding:2rem;text-align:center}
     .card h3{margin-bottom:.5rem}
 
-    /* -------- FOOTER -------- */
-    footer{padding:4rem 0;border-top:1px solid #111;text-align:center;font-size:.85rem;color:#777}
-
     /* -------- MODAL -------- */
     .modal{display:none;position:fixed;inset:0;z-index:1000}
     .modal-backdrop{position:absolute;inset:0;background:#0008;backdrop-filter:blur(4px)}
-    .modal-dialog{position:relative;z-index:2;max-width:640px;width:90%;margin:6vh auto;padding:2rem 1rem;background:#000;border-radius:18px;box-shadow:0 0 24px rgba(255,61,61,.45)}
-    .modal-close{position:absolute;top:8px;right:12px;background:none;border:none;color:#fff;font-size:1.75rem;cursor:pointer}
+    .modal-dialog{position:relative;z-index:2;max-width:640px;width:90%;margin:6vh auto;padding:0;background:#000;border-radius:18px;box-shadow:0 0 24px rgba(255,61,61,.45)}
+    .modal-close{position:absolute;top:8px;right:12px;background:none;border:none;color:#fff;font-size:1.75rem;cursor:pointer;z-index:3}
     body.modal-open{overflow:hidden}
 
-    #getWaitlistContainer iframe{border:none!important;width:100%!important;min-height:360px!important}
+    /* ensure widget visible */
+    #getWaitlistContainer{min-height:380px}
+
+    /* FOOTER */
+    footer{padding:4rem 0;border-top:1px solid #111;text-align:center;font-size:.85rem;color:#777}
   </style>
 </head>
 <body>
   <!-- HERO -->
   <section class="hero container">
-    <h1 class="glitch" data-text="7‑DAY IDENTITY POSSESSION">7‑DAY IDENTITY POSSESSION</h1>
-    <p>Enter <strong>Deathwish</strong> — a week‑long ritual where we burn your ego <em>in public</em>, force you to ship ugly, and let chaos pay your rent.</p>
+    <h1 class="glitch" data-text="7-DAY IDENTITY POSSESSION">7-DAY IDENTITY POSSESSION</h1>
+    <p>Enter <strong>Deathwish</strong> — a week-long ritual where we burn your ego <em>in public</em>, force you to ship ugly, and let chaos pay your rent.</p>
     <button id="openWaitlist" class="cta-btn">Start the Deathwish 🔥</button>
   </section>
 
@@ -66,7 +67,12 @@
     <div class="modal-backdrop"></div>
     <div class="modal-dialog">
       <button class="modal-close" aria-label="Close">✖</button>
-      <!-- GetWaitlist Widget (light preset) -->
+
+      <!-- Waitlist assets MUST come before the container per official docs -->
+      <link rel="stylesheet" href="https://getwaitlist.com/styles/widget.css" />
+      <script src="https://getwaitlist.com/js/widget.js"></script>
+
+      <!-- The widget container  -->
       <div id="getWaitlistContainer" data-waitlist_id="30058" data-widget_type="WIDGET_1"></div>
     </div>
   </div>
@@ -81,23 +87,7 @@
     </div>
   </section>
 
-  <!-- PROOF placeholder -->
-  <section class="container" id="proof">
-    <h2>Chaos Receipts</h2>
-    <p>(Real screenshots from our beta cult. Carousel coming soon.)</p>
-  </section>
-
-  <section class="container" style="text-align:center;padding-bottom:6rem;">
-    <p style="margin-top:1rem;font-size:.85rem;color:#777">We value mischief. Your email won’t be sold — just possessed.</p>
-  </section>
-
-  <footer>
-    <p>&copy; 2025 SKANverse Inc. • Built in chaos • <a href="#">Cult Lore</a> • <a href="#">Terms</a></p>
-  </footer>
-
-  <!-- GetWaitlist assets -->
-  <link rel="stylesheet" href="https://getwaitlist.com/styles/widget.css" />
-  <script src="https://getwaitlist.com/js/widget.js" defer></script>
+  <footer><p>&copy; 2025 SKANverse Inc.</p></footer>
 
   <!-- MODAL JS -->
   <script>
@@ -113,10 +103,7 @@
     closeBtn.addEventListener('click',closeModal);
     backdrop.addEventListener('click',closeModal);
 
-    document.addEventListener('waitlist:success',()=>{
-      if(typeof gtag==='function') gtag('event','waitlist_signup');
-      closeModal();
-    });
+    document.addEventListener('waitlist:success',closeModal);
   </script>
 </body>
 </html>
