@@ -4,62 +4,84 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>SKANdalousAI – 7‑Day Identity Possession</title>
+  <meta name="description" content="Burn your ego, ship ugly & earn your first $ in 7 days. Join the SKANdalous Possession wait‑list." />
+  <meta property="og:title" content="SKANdalousAI – 7‑Day Identity Possession" />
+  <meta property="og:description" content="Burn your ego, ship ugly & earn your first $ in 7 days. Join the cult wait‑list." />
+  <meta property="og:image" content="https://skandalousai.com/og-banner.png" />
 
   <!-- FONTS & RESET -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@300;400;700&display=swap" rel="stylesheet" />
 
   <style>
+    :root{--accent:#ff3d3d}
+
+    /* -------- LOGO -------- */
+    .site-header{position:fixed;top:1rem;left:1rem;z-index:2000}
+    .site-header img{width:56px;height:auto;filter:drop-shadow(0 0 4px var(--accent))}
+
     /* -------- BASE -------- */
     *,*:before,*:after{box-sizing:border-box;margin:0;padding:0}
     html{scroll-behavior:smooth}
-    body{font-family:'Inter',sans-serif;background:#000;color:#fff;line-height:1.5;-webkit-font-smoothing:antialiased}
-    a{color:#ff3d3d;text-decoration:none}
+    body{font-family:'Inter',sans-serif;background:#000;color:#fff;line-height:1.5;-webkit-font-smoothing:antialiased;font-weight:300}
+    a{color:var(--accent);text-decoration:none}
 
     h1,h2,h3{font-family:'Playfair Display',serif;font-weight:900;letter-spacing:-.5px}
     h1{font-size:clamp(2.5rem,5vw,4rem);line-height:1.1}
     h2{font-size:2rem;margin-top:3rem}
-    p{margin:1rem 0;font-size:1.05rem;color:#d1d1d1}
+    p{margin:1rem 0;font-size:1.05rem;color:#d1d1d1;font-weight:400}
     .container{width:min(90%,1100px);margin-inline:auto;padding:4rem 0}
 
     /* -------- HERO -------- */
     .hero{display:flex;flex-direction:column;align-items:center;text-align:center;gap:2rem;padding:6rem 0}
     .glitch{position:relative;color:#fff}
     .glitch:before,.glitch:after{content:attr(data-text);position:absolute;top:0;left:0;width:100%;opacity:.8}
-    .glitch:before{left:2px;text-shadow:-2px 0 #ff3d3d;animation:gl1 2s infinite alternate-reverse linear}
+    .glitch:before{left:2px;text-shadow:-2px 0 var(--accent);animation:gl1 2s infinite alternate-reverse linear}
     .glitch:after{left:-2px;text-shadow:-2px 0 #b36bff;animation:gl1 1.5s infinite alternate-reverse linear}
     @keyframes gl1{0%{clip-path:inset(0 0 90% 0)}20%{clip-path:inset(15% 0 70% 0)}40%{clip-path:inset(50% 0 30% 0)}60%{clip-path:inset(80% 0 5% 0)}80%{clip-path:inset(30% 0 55% 0)}100%{clip-path:inset(0 0 90% 0)}}
 
-    .cta-btn{display:inline-block;background:#ff3d3d;color:#fff;padding:.9rem 2rem;border-radius:8px;font-weight:700;border:none;cursor:pointer;transition:transform .25s}
-    .cta-btn:hover{transform:translateY(-4px)}
+    .cta-btn{display:inline-block;background:var(--accent);color:#fff;padding:.9rem 2rem;border-radius:10px;font-weight:700;border:none;cursor:pointer;transition:transform .25s,box-shadow .25s}
+    .cta-btn:hover{transform:translateY(-4px);box-shadow:0 0 16px var(--accent)}
+    .cta-btn.pulse{animation:pulseShadow 2.4s ease-in-out infinite 1s}
+    @keyframes pulseShadow{0%,100%{box-shadow:0 0 0 rgba(255,61,61,0)}50%{box-shadow:0 0 24px rgba(255,61,61,.6)}}
 
     /* -------- GRID -------- */
-    .grid{display:grid;gap:2rem}
-    .three-col{grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
-    .card{background:#111;border:1px solid #333;border-radius:16px;padding:2rem;text-align:center}
-    .card h3{margin-bottom:.5rem}
+    .grid{display:grid;gap:2rem;justify-items:center}
+    .three-col{grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}
+
+    .card{position:relative;background:#111;border:1px solid #222;border-radius:16px;padding:2rem;text-align:center;transition:background .3s,transform .3s}
+    .card:before{content:"";position:absolute;inset:0;border-radius:inherit;background:radial-gradient(circle at 50% 0%,rgba(255,255,255,.06) 0%,rgba(255,255,255,0) 60%);opacity:.0;transition:opacity .3s}
+    .card:hover{transform:translateY(-6px);background:#141414}
+    .card:hover:before{opacity:.8}
+    .card h3{margin-bottom:.5rem;color:#fff;font-weight:700}
 
     /* -------- MODAL -------- */
     .modal{display:none;position:fixed;inset:0;z-index:1000}
     .modal-backdrop{position:absolute;inset:0;background:#0008;backdrop-filter:blur(4px)}
-    .modal-dialog{position:relative;z-index:2;max-width:640px;width:90%;margin:6vh auto;padding:0;background:#000;border-radius:18px;box-shadow:0 0 24px rgba(255,61,61,.45)}
+    .modal-dialog{position:relative;z-index:2;max-width:640px;width:90%;margin:6vh auto;padding:0;background:#000;border-radius:18px;box-shadow:0 0 24px rgba(255,61,61,.45);transform:scale(.9);opacity:0;transition:transform .15s ease-out,opacity .15s ease-out}
+    .modal.show .modal-dialog{transform:scale(1);opacity:1}
     .modal-close{position:absolute;top:8px;right:12px;background:none;border:none;color:#fff;font-size:1.75rem;cursor:pointer;z-index:3}
     body.modal-open{overflow:hidden}
 
-    /* ensure widget visible */
-    #getWaitlistContainer{min-height:380px}
+    #getWaitlistContainer{min-height:400px}
 
     /* FOOTER */
-    footer{padding:4rem 0;border-top:1px solid #111;text-align:center;font-size:.85rem;color:#777}
+    footer{padding:4rem 0;border-top:1px solid var(--accent);text-align:center;font-size:.85rem;color:#777;display:flex;flex-direction:column;align-items:center;gap:.5rem}
+    footer img{width:24px;opacity:.6}
   </style>
 </head>
 <body>
+  <!-- LOGO -->
+  <header class="site-header">
+    <a href="#top"><img src="skandalous-logo.png" alt="SKANdalousAI logo"></a>
+  </header>
+
   <!-- HERO -->
   <section class="hero container">
     <h1 class="glitch" data-text="7-DAY IDENTITY POSSESSION">7-DAY IDENTITY POSSESSION</h1>
     <p>Enter <strong>Deathwish</strong> — a week-long ritual where we burn your ego <em>in public</em>, force you to ship ugly, and let chaos pay your rent.</p>
-    <button id="openWaitlist" class="cta-btn">Start the Deathwish 🔥</button>
+    <button id="openWaitlist" class="cta-btn pulse">Start the Deathwish 🔥</button>
   </section>
 
   <!-- MODAL -->
@@ -68,10 +90,6 @@
     <div class="modal-dialog">
       <button class="modal-close" aria-label="Close">✖</button>
 
-      <!-- Waitlist container -->
-            <!-- Waitlist container / dark preset -->
-            <!-- Waitlist – dark theme -->
-            <!-- Waitlist container – free tier (white) but we’ll dark‑theme it with custom CSS  -->
       <div id="getWaitlistContainer"
            data-waitlist_id="30058"
            data-widget_type="WIDGET_1"
@@ -80,7 +98,6 @@
            data-text="#ffffff"
            data-btn-text="#ffffff"></div>
 
-      <!-- Waitlist assets AFTER container so script finds it, use defer -->
       <link rel="stylesheet" href="https://prod-waitlist-widget.s3.us-east-2.amazonaws.com/getwaitlist.min.css" />
       <script src="https://prod-waitlist-widget.s3.us-east-2.amazonaws.com/getwaitlist.min.js" defer></script>
     </div>
@@ -90,29 +107,27 @@
   <section class="container">
     <h2>What You Get in 7 Days</h2>
     <div class="grid three-col">
-      <div class="card"><h3>Dare Pack</h3><p>7 ego‑crushing tasks delivered daily to your inbox at 9 AM IST.</p></div>
+      <div class="card"><h3>Dare Pack</h3><p>7 ego‑crushing tasks delivered daily to your inbox at 9 AM EST.</p></div>
       <div class="card"><h3>Proof Ritual</h3><p>Upload your chaos receipts to the cult wall for instant dopamine & social clout.</p></div>
-      <div class="card"><h3>Digital Rebirth</h3><p>Walk out with a new persona, audience momentum, and your first ₹ earned.</p></div>
+      <div class="card"><h3>Digital Rebirth</h3><p>Walk out with a new persona, audience momentum, and your first $ earned.</p></div>
     </div>
   </section>
 
-  <footer><p>&copy; 2025 SKANverse Inc.</p></footer>
+  <footer>
+    <img src="skandalous-logo.png" alt="skul logo">
+    <p>&copy; 2025 SKANverse Inc.</p>
+  </footer>
 
-  <!-- MODAL JS -->
+  <!-- MODAL JS & CTA pulse observer -->
   <script>
-    const modal   = document.getElementById('waitlistModal');
-    const openBtn = document.getElementById('openWaitlist');
-    const closeBtn= document.querySelector('.modal-close');
-    const backdrop= document.querySelector('.modal-backdrop');
+    const modal=document.getElementById('waitlistModal');
+    const dialog=document.querySelector('.modal-dialog');
+    const openBtn=document.getElementById('openWaitlist');
+    const closeBtn=document.querySelector('.modal-close');
+    const backdrop=document.querySelector('.modal-backdrop');
 
-    const openModal = () => { modal.style.display='block'; document.body.classList.add('modal-open'); };
-    const closeModal= () => { modal.style.display='none'; document.body.classList.remove('modal-open'); };
+    const openModal=()=>{modal.style.display='block';modal.classList.add('show');document.body.classList.add('modal-open');if(typeof gtag==='function') gtag('event','waitlist_open');};
+    const closeModal=()=>{modal.style.display='none';modal.classList.remove('show');document.body.classList.remove('modal-open');};
 
     openBtn.addEventListener('click',e=>{e.preventDefault();openModal();});
-    closeBtn.addEventListener('click',closeModal);
-    backdrop.addEventListener('click',closeModal);
-
-    document.addEventListener('waitlist:success',closeModal);
-  </script>
-</body>
-</html>
+    closeBtn
