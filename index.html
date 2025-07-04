@@ -13,9 +13,9 @@
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-4TB0RV74D6"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
-    function gtag(){ dataLayer.push(arguments);} 
+    function gtag(){dataLayer.push(arguments);} 
     gtag('js', new Date());
-    gtag('config','G-4TB0RV74D6');
+    gtag('config', 'G-4TB0RV74D6');
   </script>
 
   <!-- FONTS & RESET -->
@@ -57,7 +57,6 @@
     /* GRID */
     .grid{display:grid;gap:2rem;justify-items:center}
     .three-col{grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}
-
     .card{position:relative;background:#111;border:1px solid #222;border-radius:16px;padding:2rem;text-align:center;transition:background .3s,transform .3s}
     .card:before{content:"";position:absolute;inset:0;border-radius:inherit;background:radial-gradient(circle at 50% 0%,rgba(255,255,255,.06) 0%,rgba(255,255,255,0) 60%);opacity:0;transition:opacity .3s}
     .card:hover{transform:translateY(-6px);background:#141414}
@@ -80,14 +79,17 @@
   </style>
 </head>
 <body>
+  <!-- Logo -->
   <header class="site-header"><a href="#top"><img src="skandalous-logo.png" alt="SKANdalousAI logo"></a></header>
 
+  <!-- Hero -->
   <section class="hero container">
     <h1 class="glitch" data-text="7-DAY IDENTITY POSSESSION">7-DAY IDENTITY POSSESSION</h1>
-    <p>Enter <strong>Deathwish</strong> — a week-long ritual where we burn your ego <em>in public</em>, force you to ship ugly, and let chaos pay your rent.</p>
+    <p>Enter <strong>Deathwish</strong> — a week‑long ritual where we burn your ego <em>in public</em>, force you to ship ugly, and let chaos pay your rent.</p>
     <button id="openWaitlist" class="cta-btn pulse">Start the Deathwish 🔥</button>
   </section>
 
+  <!-- Modal -->
   <div id="waitlistModal" class="modal">
     <div class="modal-backdrop"></div>
     <div class="modal-dialog">
@@ -104,7 +106,50 @@
     </div>
   </div>
 
-  <section class="container">
+  <!-- What you get -->
+  <section class="container" id="benefits">
     <h2>What You Get in 7 Days</h2>
     <div class="grid three-col">
-      <div class="card"><h3>Dare Pack</h3><p>7 ego‑crushing tasks delivered daily
+      <div class="card"><h3>Dare Pack</h3><p>7 ego‑crushing tasks delivered daily to your inbox at 9 AM EST.</p></div>
+      <div class="card"><h3>Proof Ritual</h3><p>Upload your chaos receipts to the cult wall for instant dopamine & social clout.</p></div>
+      <div class="card"><h3>Digital Rebirth</h3><p>Walk out with a new persona, audience momentum, and your first $ earned.</p></div>
+    </div>
+  </section>
+
+  <footer>
+    <img src="skandalous-logo.png" alt="skull logo">
+    <p>&copy; 2025 SKANverse Inc.</p>
+  </footer>
+
+  <!-- Modal controller & analytics events -->
+  <script>
+    const modal   = document.getElementById('waitlistModal');
+    const dialog  = modal.querySelector('.modal-dialog');
+    const openBtn = document.getElementById('openWaitlist');
+    const closeBtn= modal.querySelector('.modal-close');
+    const backdrop= modal.querySelector('.modal-backdrop');
+
+    function openModal(){
+      modal.style.display='block';
+      requestAnimationFrame(()=>modal.classList.add('show'));
+      document.body.classList.add('modal-open');
+      if(typeof gtag==='function') gtag('event','waitlist_open');
+    }
+    function closeModal(){
+      modal.classList.remove('show');
+      document.body.classList.remove('modal-open');
+      setTimeout(()=>modal.style.display='none',160);
+    }
+
+    openBtn.addEventListener('click',e=>{e.preventDefault();openModal();});
+    closeBtn.addEventListener('click',closeModal);
+    backdrop.addEventListener('click',closeModal);
+    document.addEventListener('keydown',e=>{if(e.key==='Escape') closeModal();});
+
+    // Waitlist success event
+    document.addEventListener('waitlist:success',()=>{
+      if(typeof gtag==='function') gtag('event','waitlist_signup');
+    });
+  </script>
+</body>
+</html>
