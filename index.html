@@ -66,7 +66,6 @@
     /* ---------- Footer ---------- */
     footer{padding:4rem 0;border-top:1px solid #111;text-align:center;font-size:.85rem;color:#777}
 
-    /* ---------- Media ---------- */
     @media(max-width:600px){h1{font-size:2.25rem}}
   </style>
 
@@ -107,47 +106,33 @@
     </div>
   </div>
 
-  <!--  What You Get  -->
-  <section class="container">
-    <h2>What You Get in 7 Days</h2>
-    <div class="grid three-col">
-      <div class="card"><h3>Dare Pack</h3><p>7 ego‑crushing tasks delivered daily to your inbox at 9 AM ET.</p></div>
-      <div class="card"><h3>Proof Ritual</h3><p>Upload your chaos receipts to the cult wall for instant dopamine & social clout.</p></div>
-      <div class="card"><h3>Digital Rebirth</h3><p>Walk out with a new persona, audience momentum, and your first $ earned.</p></div>
-    </div>
-  </section>
-
   <footer>
-    <p>&copy; 2025 SKANverse Inc. • Built in chaos • <a href="#">Cult Lore</a> • <a href="#">Terms</a></p>
+    <p>&copy; 2025 SKANverse Inc. • Built in chaos • <a href="#">Cult Lore</a> • <a href="#">Terms</a></p>
   </footer>
 
+  <!--  Modal & Counter Logic  -->
   <script>
-    // Souls counter
-    async function updateSouls(){
-      try{const r=await fetch('https://api.getwaitlist.com/api/_lists/30058/count');
-        if(!r.ok) return; const {count}=await r.json();
-        document.getElementById('souls').textContent=`${count.toLocaleString()} souls pledged`;}
-      catch(e){/* silent */}}
-    updateSouls();
+  document.addEventListener('DOMContentLoaded',()=>{
+    const modal=document.getElementById('waitlistModal');
+    const openBtn=document.getElementById('openWaitlist');
+    const closeBtn=modal.querySelector('.modal-close');
+    const backdrop=modal.querySelector('.modal-backdrop');
+    const soulsEl=document.getElementById('souls');
 
-    // Modal logic
-    document.addEventListener('DOMContentLoaded',()=>{
-      const modal=document.getElementById('waitlistModal');
-      const openBtn=document.getElementById('openWaitlist');
-      const closeBtn=modal.querySelector('.modal-close');
-      const backdrop=modal.querySelector('.modal-backdrop');
+    function setSouls(n){soulsEl.textContent=`${n.toLocaleString()} souls pledged`;}
 
-      function openModal(){modal.style.display='block';requestAnimationFrame(()=>modal.classList.add('show'));gtag('event','waitlist_open');}
-      function closeModal(){modal.classList.remove('show');setTimeout(()=>modal.style.display='none',150);} 
+    function openModal(){modal.style.display='block';requestAnimationFrame(()=>modal.classList.add('show'));gtag('event','waitlist_open');}
+    function closeModal(){modal.classList.remove('show');setTimeout(()=>modal.style.display='none',150);}    
 
-      openBtn.addEventListener('click',openModal);
-      closeBtn.addEventListener('click',closeModal);
-      backdrop.addEventListener('click',closeModal);
-      document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal();});
+    openBtn.addEventListener('click',openModal);
+    closeBtn.addEventListener('click',closeModal);
+    backdrop.addEventListener('click',closeModal);
+    window.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal();});
 
-      // Waitlist success — refresh counter
-      window.addEventListener('waitlist:success',()=>{updateSouls();});
-    });
+    // Waitlist events
+    window.addEventListener('waitlist:ready',e=>{setSouls(e.detail.count);});
+    window.addEventListener('waitlist:success',e=>{setSouls(e.detail.count);gtag('event','waitlist_success');});
+  });
   </script>
 </body>
 </html>
