@@ -226,5 +226,21 @@
       });
     });
   </script>
-</body>
+</body> 
+  <script>
+  /* live counter from official widget events */
+  const souls = document.getElementById('soulsCount');
+
+  window.addEventListener('waitlist:ready',  e => {
+    souls.textContent =
+      e.detail.waitlist?.signup_count ?? e.detail.count ?? '0';
+  });
+
+  window.addEventListener('waitlist:success', e => {
+    souls.textContent =
+      e.detail.waitlist?.signup_count ?? e.detail.count ??
+      (+souls.textContent + 1);
+  });
+</script>
+
 </html>
