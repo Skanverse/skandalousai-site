@@ -1,246 +1,147 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>SKANdalousAI – 7-Day Identity Possession</title>
-
-  <!-- ── SEO / OG -->
-  <meta name="description"
-        content="Burn your ego, ship ugly & earn your first $ in 7 days. Join the SKANdalous Possession wait-list.">
-  <meta property="og:title"       content="SKANdalousAI – 7-Day Identity Possession">
-  <meta property="og:description" content="Burn your ego, ship ugly & earn your first $ in 7 days. Join the cult wait-list.">
-  <meta property="og:image"       content="https://skandalousai.com/og-banner.png">
-
-  <!-- ── GA-4 (replace ID if you have a new one) -->
+  <title>SKANdalousAI – 7‑Day Identity Possession</title>
+  
+  <!-- SEO & Social -->
+  <meta name="description" content="Enter Deathwish — a week‑long ritual where we burn your ego in public, force you to ship ugly, and let chaos pay your rent." />
+  <link rel="canonical" href="https://www.skandalousai.com/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="SKANdalousAI – 7‑Day Identity Possession" />
+  <meta property="og:description" content="Enter Deathwish — a week‑long ritual where we burn your ego in public." />
+  <meta property="og:url" content="https://www.skandalousai.com/" />
+  <meta property="og:image" content="https://www.skandalousai.com/skandalous-logo.png" />
+  
+  <!-- Google Analytics (GA‑4) | Measurement ID G‑4TB0RV74D6 -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-4TB0RV74D6"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
-    function gtag(){ dataLayer.push(arguments); }
-    gtag('js', new Date());
+    function gtag(){dataLayer.push(arguments);} gtag('js', new Date());
     gtag('config', 'G-4TB0RV74D6');
   </script>
 
-  <!-- ── Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@300;400;700&display=swap"
-    rel="stylesheet">
+  <!-- FONTS -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@300;400;700&display=swap" rel="stylesheet" />
 
   <style>
-    :root{--accent:#ff3d3d;}
-
-    /* ---------- Base ---------- */
+    /* ---------- Base ---------- */
     *,*:before,*:after{box-sizing:border-box;margin:0;padding:0}
     html{scroll-behavior:smooth}
-    body{
-      font-family:'Inter',sans-serif;
-      background:#000;color:#fff;line-height:1.5;font-weight:300;
-      -webkit-font-smoothing:antialiased;
-    }
+    body{font-family:'Inter',sans-serif;font-weight:300;background:#000;color:#fff;line-height:1.5;-webkit-font-smoothing:antialiased}
     h1,h2,h3{font-family:'Playfair Display',serif;font-weight:900;letter-spacing:-.5px}
     h1{font-size:clamp(2.5rem,5vw,4rem);line-height:1.1}
     h2{font-size:2rem;margin-top:3rem}
-    p{margin:1rem 0;color:#d1d1d1}
-    a{color:var(--accent);text-decoration:none}
+    a{color:#ff3d3d;text-decoration:none}
+    p{margin:1rem 0;font-size:1.05rem;color:#d1d1d1}
     .container{width:min(90%,1100px);margin-inline:auto;padding:4rem 0}
 
-    /* ---------- Logo ---------- */
-    .site-header{position:fixed;top:1rem;left:1rem;z-index:2000}
-    .site-header img{width:56px;filter:drop-shadow(0 0 4px var(--accent))}
-
-    /* ---------- Hero ---------- */
+    /* ---------- Hero ---------- */
     .hero{display:flex;flex-direction:column;align-items:center;text-align:center;gap:2rem;padding:6rem 0}
-    .glitch{position:relative}
-    .glitch:before,.glitch:after{
-      content:attr(data-text);position:absolute;top:0;left:0;width:100%;opacity:.85}
-    .glitch:before{left:2px;text-shadow:-2px 0 var(--accent);
-      animation:gl 2s linear infinite alternate-reverse}
-    .glitch:after{left:-2px;text-shadow:-2px 0 #b36bff;
-      animation:gl 1.5s linear infinite alternate-reverse}
-    @keyframes gl{
-      0%{clip-path:inset(0 0 90% 0)}20%{clip-path:inset(15% 0 70% 0)}
-      40%{clip-path:inset(50% 0 30% 0)}60%{clip-path:inset(80% 0 5% 0)}
-      80%{clip-path:inset(30% 0 55% 0)}100%{clip-path:inset(0 0 90% 0)}
-    }
+    .glitch{position:relative;color:#fff}
+    .glitch:before,.glitch:after{content:attr(data-text);position:absolute;top:0;left:0;width:100%;opacity:.8}
+    .glitch:before{left:2px;text-shadow:-2px 0 #ff3d3d;animation:glitch 2s infinite linear alternate-reverse}
+    .glitch:after{left:-2px;text-shadow:-2px 0 #b36bff;animation:glitch 1.5s infinite linear alternate-reverse}
+    @keyframes glitch{0%{clip-path:inset(0 0 90% 0)}20%{clip-path:inset(15% 0 70% 0)}40%{clip-path:inset(50% 0 30% 0)}60%{clip-path:inset(80% 0 5% 0)}80%{clip-path:inset(30% 0 55% 0)}100%{clip-path:inset(0 0 90% 0)}}
+    .cta-btn{display:inline-block;background:#ff3d3d;color:#fff;padding:.9rem 2rem;border-radius:8px;font-weight:700;transition:transform .25s,box-shadow .25s}
+    .cta-btn:hover{transform:translateY(-4px);box-shadow:0 0 12px #ff3d3d77}
 
-    .cta-btn{
-      background:var(--accent);color:#fff;padding:.9rem 2rem;border:none;
-      border-radius:10px;font-weight:700;cursor:pointer;transition:.25s}
-    .cta-btn:hover{transform:translateY(-4px);box-shadow:0 0 16px var(--accent)}
-
-    /* ---------- Cards ---------- */
-    .grid{display:grid;gap:2rem;justify-items:center}
-    .three-col{grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}
-    .card{
-      background:#111;border:1px solid #222;border-radius:16px;padding:2rem;text-align:center;
-      transition:.3s}
-    .card:hover{background:#191919;transform:translateY(-6px)}
-
-    /* ---------- Modal ---------- */
+    /* ---------- Modal ---------- */
     .modal{display:none;position:fixed;inset:0;z-index:1000}
-    .modal-backdrop{position:absolute;inset:0;background:#0008;backdrop-filter:blur(4px)}
-    .modal-dialog{
-      position:relative;z-index:2;max-width:640px;width:90%;margin:6vh auto;
-      background:#000;border-radius:18px;
-      box-shadow:0 0 24px rgba(255,61,61,.45);
-      transform:scale(.9);opacity:0;transition:.15s ease-out}
     .modal.show .modal-dialog{transform:scale(1);opacity:1}
-    .modal-close{
-      position:absolute;top:8px;right:12px;background:none;border:none;
-      font-size:1.75rem;color:#fff;cursor:pointer}
+    .modal-backdrop{position:absolute;inset:0;background:#0008;backdrop-filter:blur(4px)}
+    .modal-dialog{position:relative;z-index:2;max-width:640px;width:90%;margin:5% auto;padding:1.5rem;border-radius:1rem;background:#000;box-shadow:0 0 20px #ff3d3d55;transform:scale(.9);opacity:0;transition:.15s ease-out}
+    .modal-close{position:absolute;top:.75rem;right:.75rem;background:none;border:0;color:#fff;font-size:2rem;cursor:pointer;line-height:1}
 
-    body.modal-open{overflow:hidden}
+    /* ---------- Cards ---------- */
+    .grid{display:grid;gap:2rem}
+    .three-col{grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
+    .card{background:#111;border:1px solid #333;border-radius:16px;padding:2rem;text-align:center;transition:background .3s}
+    .card:hover{background:linear-gradient(#111 0%,#1a1a1a 60%,#111 100%)}
+    .card h3{margin-bottom:.5rem;font-weight:700;color:#fff}
 
-    footer{padding:4rem 0;border-top:1px solid var(--accent);text-align:center;
-           font-size:.85rem;color:#777}
+    /* ---------- Footer ---------- */
+    footer{padding:4rem 0;border-top:1px solid #111;text-align:center;font-size:.85rem;color:#777}
   </style>
 </head>
 <body>
-
-  <!-- ---------- Logo ---------- -->
-  <header class="site-header">
-    <img src="skandalous-logo.png" alt="SKAN logo">
-  </header>
-
-  <!-- ---------- Hero ---------- -->
+  <!-- Hero -->
   <section class="hero container">
-    <h1 class="glitch" data-text="7-DAY IDENTITY POSSESSION">7-DAY IDENTITY POSSESSION</h1>
-    <p>Enter <strong>Deathwish</strong> — a week-long ritual where we burn your ego
-       <em>in public</em>, force you to ship ugly, and let chaos pay your rent.</p>
-
-    <p id="soulsWrap" style="font-size:1.35rem">
-      <span id="soulsCount" style="font-weight:700">–</span> souls pledged
-    </p>
-
+    <img src="skandalous-logo.png" alt="SKAN logo" style="height:64px;width:auto;margin-bottom:1rem" />
+    <h1 class="glitch" data-text="7‑DAY IDENTITY POSSESSION">7‑DAY IDENTITY POSSESSION</h1>
+    <p>Enter <strong>Deathwish</strong> — a week‑long ritual where we burn your ego <em>in public</em>, force you to ship ugly, and let chaos pay your rent.</p>
+    <h2><span id="pledged">–</span> souls pledged</h2>
     <button id="openWaitlist" class="cta-btn">Start the Deathwish 🔥</button>
   </section>
 
-  <!-- ---------- Modal (Waitlist widget inside) ---------- -->
-  <div id="waitlistModal" class="modal">
+  <!-- What you get -->
+  <section class="container">
+    <h2>What You Get in 7 Days</h2>
+    <div class="grid three-col">
+      <div class="card"><h3>Dare Pack</h3><p>7 ego‑crushing tasks delivered daily to your inbox at 9 AM ET.</p></div>
+      <div class="card"><h3>Proof Ritual</h3><p>Upload your chaos receipts to the cult wall for instant dopamine & social clout.</p></div>
+      <div class="card"><h3>Digital Rebirth</h3><p>Walk out with a new persona, audience momentum, and your first $ earned.</p></div>
+    </div>
+  </section>
+
+  <!-- Waitlist Modal -->
+  <div id="waitlistModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="waitlist-heading">
     <div class="modal-backdrop"></div>
-
     <div class="modal-dialog">
-      <button class="modal-close" aria-label="Close">✖</button>
-
-      <div id="getWaitlistContainer"
+      <button class="modal-close" aria-label="Close">&times;</button>
+      <h3 id="waitlist-heading" style="text-align:center;margin-bottom:1rem">Join the Possession</h3>
+      <div id="waitlist"
            data-waitlist_id="30058"
            data-widget_type="WIDGET_1"
            data-primary="#ff3d3d"
            data-background="#000000"
            data-text="#ffffff"
            data-btn-text="#ffffff"></div>
-
       <!-- Waitlist assets -->
-      <link rel="stylesheet"
-            href="https://prod-waitlist-widget.s3.us-east-2.amazonaws.com/getwaitlist.min.css">
+      <link rel="stylesheet" href="https://prod-waitlist-widget.s3.us-east-2.amazonaws.com/getwaitlist.min.css" />
       <script src="https://prod-waitlist-widget.s3.us-east-2.amazonaws.com/getwaitlist.min.js" defer></script>
     </div>
   </div>
 
-  <!-- ---------- What you get ---------- -->
-  <section class="container">
-    <h2>What You Get in 7 Days</h2>
-    <div class="grid three-col">
-      <div class="card">
-        <h3>Dare Pack</h3>
-        <p>7 ego-crushing tasks delivered daily to your inbox at 9 AM EST.</p>
-      </div>
-      <div class="card">
-        <h3>Proof Ritual</h3>
-        <p>Upload your chaos receipts to the cult wall for instant dopamine & social clout.</p>
-      </div>
-      <div class="card">
-        <h3>Digital Rebirth</h3>
-        <p>Walk out with a new persona, audience momentum, and your first $ earned.</p>
-      </div>
-    </div>
-  </section>
+  <footer>
+    <p>&copy; 2025 SKANverse Inc. • Built in chaos • <a href="#">Cult&nbsp;Lore</a> • <a href="#">Terms</a></p>
+  </footer>
 
-  <footer>© 2025 SKANverse Inc.</footer>
-
-  <!-- ---------- Controller & Souls counter ---------- -->
+  <!-- Souls pledged counter (runs once per load) -->
   <script>
-    document.addEventListener('DOMContentLoaded', () => {
-
-      /* grab elements */
-      const modal      = document.getElementById('waitlistModal');
-      const openBtn    = document.getElementById('openWaitlist');
-      const closeBtn   = modal.querySelector('.modal-close');
-      const backdrop   = modal.querySelector('.modal-backdrop');
-      const soulsCount = document.getElementById('soulsCount');
-
-      /* ---- modal helpers ---- */
-      function openModal () {
-        modal.style.display = 'block';
-        requestAnimationFrame(() => modal.classList.add('show'));
-        document.body.classList.add('modal-open');
-
-        /* GA event */
-        if (window.gtag) gtag('event', 'waitlist_open');
-        
-        /* start scraping after widget loads */
-        setTimeout(scrapeSouls, 1500);
-      }
-
-      function closeModal () {
-        modal.classList.remove('show');
-        document.body.classList.remove('modal-open');
-        setTimeout(() => { modal.style.display = 'none'; }, 160);
-      }
-
-      openBtn.addEventListener('click', e => { e.preventDefault(); openModal(); });
-      closeBtn.addEventListener('click', closeModal);
-      backdrop.addEventListener('click', closeModal);
-      document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
-
-      /* ---- souls counter (DOM scrape fallback) ---- */
-      function scrapeSouls () {
-        const iframe = document.querySelector('#getWaitlistContainer iframe');
-        if (!iframe) return;
-
-        try {
-          const insideDoc = iframe.contentDocument || iframe.contentWindow.document;
-          const box = insideDoc.querySelector('[data-testid=\"waitlist-count\"]') ||
-                      insideDoc.querySelector('[data-waitlist-count]');
-          if (box) {
-            const c = parseInt(box.textContent.trim(), 10);
-            if (!isNaN(c)) soulsCount.textContent = c;
-          }
-        } catch (_) { /* cross-domain race – ignore */ }
-      }
-
-      /* update every 30 s while the modal is open */
-      setInterval(() => {
-        if (modal.style.display === 'block') scrapeSouls();
-      }, 30000);
-
-      /* also bump when the widget itself fires */
-      window.addEventListener('waitlist:success', e => {
-        try {
-          const num = e.detail.count || e.detail.signup.waitlist_position ||
-                      parseInt(soulsCount.textContent,10)+1;
-          soulsCount.textContent = num;
-        } catch(_) { /* silent */ }
-      });
-    });
+  document.addEventListener('DOMContentLoaded',()=>{
+    const counter=document.getElementById('pledged');
+    fetch('https://api.getwaitlist.com/api/v1/waitlists/30058/count')
+      .then(r=>r.ok?r.json():Promise.reject(r))
+      .then(d=>counter.textContent=d.count.toLocaleString())
+      .catch(console.error);
+  });
   </script>
-</body> 
+
+  <!-- Modal open / close -->
   <script>
-  /* live counter from official widget events */
-  const souls = document.getElementById('soulsCount');
+  document.addEventListener('DOMContentLoaded',()=>{
+    const modal=document.getElementById('waitlistModal');
+    const openBtn=document.getElementById('openWaitlist');
+    const closeBtn=modal.querySelector('.modal-close');
+    const backdrop=modal.querySelector('.modal-backdrop');
 
-  window.addEventListener('waitlist:ready',  e => {
-    souls.textContent =
-      e.detail.waitlist?.signup_count ?? e.detail.count ?? '0';
+    function openModal(){
+      modal.style.display='block';
+      requestAnimationFrame(()=>modal.classList.add('show'));
+      gtag('event','waitlist_open'); // GA event for funnel analysis
+    }
+    function closeModal(){modal.classList.remove('show');setTimeout(()=>modal.style.display='none',150);}
+
+    openBtn.addEventListener('click',openModal);
+    closeBtn.addEventListener('click',closeModal);
+    backdrop.addEventListener('click',closeModal);
+    document.addEventListener('keydown',e=>e.key==='Escape'&&modal.style.display==='block'&&closeModal());
   });
-
-  window.addEventListener('waitlist:success', e => {
-    souls.textContent =
-      e.detail.waitlist?.signup_count ?? e.detail.count ??
-      (+souls.textContent + 1);
-  });
-</script>
-
+  </script>
+</body>
 </html>
