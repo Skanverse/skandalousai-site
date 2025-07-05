@@ -88,6 +88,16 @@
     <button id="openWaitlist" class="cta-btn">Start the Deathwish 🔥</button>
   </section>
 
+  <!--  What You Get  -->
+  <section class="container" id="whatYouGet">
+    <h2>What You Get in 7 Days</h2>
+    <div class="grid three-col">
+      <div class="card"><h3>Dare Pack</h3><p>7 ego‑crushing tasks delivered daily to your inbox at 9 AM ET.</p></div>
+      <div class="card"><h3>Proof Ritual</h3><p>Upload your chaos receipts to the cult wall for instant dopamine &amp; social clout.</p></div>
+      <div class="card"><h3>Digital Rebirth</h3><p>Walk out with a new persona, audience momentum, and your first $ earned.</p></div>
+    </div>
+  </section>
+
   <!--  Modal / Waitlist  -->
   <div id="waitlistModal" class="modal" aria-hidden="true">
     <div class="modal-backdrop"></div>
@@ -129,9 +139,15 @@
     backdrop.addEventListener('click',closeModal);
     window.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal();});
 
-    // Waitlist events
-    window.addEventListener('waitlist:ready',e=>{setSouls(e.detail.count);});
-    window.addEventListener('waitlist:success',e=>{setSouls(e.detail.count);gtag('event','waitlist_success');});
+    // Pull count immediately (fallback for some browsers CORS might fail)
+    fetch('https://api.getwaitlist.com/api/v1/waitlists/30058/count')
+      .then(r=>r.ok?r.json():Promise.reject())
+      .then(d=>setSouls(d.count))
+      .catch(()=>setSouls('–'));
+
+    // Waitlist widget events (fires once script loads)
+    window.addEventListener('waitlist:ready',e=>{if(e.detail?.count)setSouls(e.detail.count);});
+    window.addEventListener('waitlist:success',e=>{if(e.detail?.count)setSouls(e.detail.count);gtag('event','waitlist_success');});
   });
   </script>
 </body>
