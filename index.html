@@ -3,131 +3,54 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>SKAN • The 7-Day Deathwish</title>
-
-  <!-- Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Changa+One:wght@400&display=swap" rel="stylesheet">
-
-  <style>
-    /* ---------- RESET BASICS ---------- */
-    *, *::before, *::after { box-sizing:border-box; }
-    html,body{margin:0;height:100%;background:#000;color:#fff;font-family:'Share Tech Mono',monospace;}
-    ::selection{background:#ff0077;color:#fff;}
-
-    /* ---------- GLOBAL FX LAYERS ---------- */
-    body::before, body::after{
-      content:'';position:fixed;inset:0;pointer-events:none;z-index:-1;
-      background:radial-gradient(circle at 50% 120%,rgba(255,0,128,.12),transparent 60%);
-      mix-blend-mode:screen;animation:bgPulse 10s infinite alternate;
-    }
-    body::after{
-      background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='2' height='2'%3E%3Crect width='1' height='1' fill='rgba(255,255,255,0.05)'/%3E%3C/svg%3E");
-      opacity:.3;
-    }
-    @keyframes bgPulse{from{filter:blur(120px);}to{filter:blur(80px);} }
-
-    /* Scanline overlay */
-    #scanlines{
-      position:fixed;inset:0;pointer-events:none;z-index:9998;
-      background-image:linear-gradient(transparent 94%,rgba(255,0,128,.04) 96%);
-      background-size:100% 3px;
-      mix-blend-mode:overlay;
-      animation:scan 7s linear infinite;
-    }
-    @keyframes scan{to{background-position:0 3px;}}
-
-    /* ---------- LAYOUT ---------- */
-    .vault{
-      min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:0 1rem;isolation:isolate;
-    }
-    .logo{
-      width:120px;margin-bottom:1rem;
-      filter:drop-shadow(0 0 12px #ff0077);
-      animation:burn 4s infinite both;
-    }
-    @keyframes burn{
-      0%,100%{filter:drop-shadow(0 0 10px #ff0077);}
-      50%{filter:drop-shadow(0 0 25px #ff0077);}
-    }
-
-    /* ---------- HERO ---------- */
-    h1{
-      font-family:'Changa One',cursive;
-      font-size:clamp(2rem,6vw,3.5rem);
-      margin:.5rem 0 1.5rem;color:#ff004e;position:relative;
-    }
-    /* glitch layers */
-    h1::before,h1::after{
-      content:attr(data-text);position:absolute;inset:0;pointer-events:none;
-    }
-    h1::before{left:2px;text-shadow:-2px 0 #0ff;clip-path:polygon(0 2%,100% 0,100% 18%,0 20%);animation:glitch 2.5s infinite;}
-    h1::after{left:-2px;text-shadow:2px 0 #f0f;clip-path:polygon(0 80%,100% 82%,100% 100%,0 98%);animation:glitch 3.1s infinite reverse;}
-    @keyframes glitch{
-      0%,5%{transform:translate(0);}
-      2%{transform:translate(-2px,2px);}
-      4%{transform:translate(2px,-2px);}
-      5%,100%{transform:translate(0);}
-    }
-
-    p{
-      max-width:540px;margin:.5rem auto 2.2rem;line-height:1.5;color:#c7c7c7;font-size:clamp(.9rem,2.8vw,1.05rem);
-    }
-
-    /* ---------- CTA BUTTON ---------- */
-    .cta{
-      display:inline-block;font-weight:bold;letter-spacing:.08em;
-      padding:.9rem 3.2rem;border-radius:6px;
-      background:linear-gradient(135deg,#ff0077 0%,#cc00ff 100%);
-      color:#fff;text-decoration:none;text-transform:uppercase;
-      box-shadow:0 0 12px rgba(255,0,128,.6);
-      position:relative;transition:transform .2s;
-    }
-    .cta:hover{transform:translateY(-3px);}
-    .cta::after{
-      content:'';position:absolute;inset:0;border-radius:inherit;pointer-events:none;
-      box-shadow:0 0 18px 6px rgba(204,0,255,.25);
-      opacity:0;transition:opacity .3s;
-    }
-    .cta:hover::after{opacity:1;animation:pulse 1.2s infinite;}
-    @keyframes pulse{0%,100%{transform:scale(1);}50%{transform:scale(1.07);}}
-
-    /* ---------- FOOTER ---------- */
-    footer{
-      width:100%;text-align:center;padding:2rem 1rem 1.2rem;
-      font-size:.7rem;letter-spacing:.06em;color:#444;
-    }
-    footer span{opacity:.4;}
-
-    /* ---------- FLOATING SIGILS ---------- */
-    .sigil{position:fixed;width:16px;height:16px;background:#ff0077bb;border-radius:50%;filter:blur(8px);opacity:.2;animation:sigil 18s linear infinite;}
-    .sigil:nth-child(1){top:20%;left:15%;animation-duration:22s;}
-    .sigil:nth-child(2){top:70%;left:80%;animation-duration:26s;}
-    .sigil:nth-child(3){top:40%;left:50%;animation-duration:24s;}
-    @keyframes sigil{0%{transform:translate(-50%,-50%) scale(.8);}100%{transform:translate(-50%,80vh) scale(1.2);}}
-  </style>
+  <title>SKANdalous AI – DEATHWISH</title>
+  <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
-  <!-- occult scanlines -->
-  <div id="scanlines"></div>
+<body class="bg-black text-white font-sans">
 
-  <!-- floating misty sigils -->
-  <div class="sigil"></div><div class="sigil"></div><div class="sigil"></div>
+  <!-- HERO SECTION -->
+  <section class="min-h-screen flex items-center justify-center text-center px-6 py-20">
+    <div>
+      <h1 class="text-5xl md:text-6xl font-bold leading-tight mb-6">$7. 7 Dares. One Life Rewritten.</h1>
+      <p class="text-lg md:text-xl text-gray-300 max-w-2xl mx-auto">
+        Join the world’s most savage internet cult.  
+        No motivation. No mercy. Just proof.
+      </p>
+      <a href="#join" class="inline-block mt-10 px-8 py-4 bg-white text-black font-bold rounded-full text-lg hover:bg-gray-200 transition">
+        Join Deathwish Now
+      </a>
+      <p class="mt-4 text-sm text-gray-400 italic">One dare a day. No refunds. No repeats.</p>
+    </div>
+  </section>
 
-  <main class="vault">
-    <img src="https://i.postimg.cc/W4KjvgJ6/skandalous-logo.png" alt="SKANdalous Logo" class="logo">
+  <!-- WHAT IS DEATHWISH -->
+  <section class="py-24 px-6 bg-gray-900 text-center">
+    <h2 class="text-3xl font-bold mb-4">What is DEATHWISH?</h2>
+    <p class="max-w-2xl mx-auto text-gray-300 text-lg">
+      A dopamine-fueled identity shakeup. 7 days. 7 high-stakes dares.  
+      You prove it with content. We track it.  
+      You fail = exile. You win = you cash in.
+    </p>
+  </section>
 
-    <h1 data-text="7 Days. 7 Dares. One Deathwish.">7 Days. 7 Dares. One Deathwish.</h1>
+  <!-- WHAT YOU GET -->
+  <section class="py-24 px-6 bg-black text-center">
+    <h2 class="text-3xl font-bold mb-8">You Get:</h2>
+    <div class="grid md:grid-cols-3 gap-10 max-w-5xl mx-auto text-left">
+      <div><h3 class="text-xl font-semibold mb-2">🔥 Daily Dares</h3><p>One chaos-infused challenge daily. Designed to disrupt your routine & feed the algorithm.</p></div>
+      <div><h3 class="text-xl font-semibold mb-2">🏆 $1 Club Entry</h3><p>Turn proof into cash. Submit your dare, win $1 daily, earn your place on the leaderboard.</p></div>
+      <div><h3 class="text-xl font-semibold mb-2">💀 Cult Discord</h3><p>Get access to the private cult. Weekly chaos, live shoutouts, and no boring people allowed.</p></div>
+    </div>
+  </section>
 
-    <p>The cult doesn’t choose everyone. But if this found you…<br>
-       it’s already begun. Join the ritual. Be transformed — or be forgotten.</p>
-
-    <a class="cta" href="https://tally.so/r/wAR7bl" target="_blank" rel="noopener">
-      Join the Cult
+  <!-- CTA AGAIN -->
+  <section class="py-20 px-6 text-center bg-gray-800">
+    <h2 class="text-4xl font-bold mb-6">The cult is open. You in?</h2>
+    <a href="#join" class="inline-block px-10 py-4 bg-white text-black font-bold rounded-full text-lg hover:bg-gray-200 transition">
+      Join for $7 – Start Your Deathwish
     </a>
-  </main>
+    <p class="mt-4 text-sm text-gray-400 italic">Monotony is the real death. Choose chaos.</p>
+  </section>
 
-  <footer>
-    SKANverse Vault v1.0.13α | Rituals secured by <span>SKANdalousAI</span>
-  </footer>
 </body>
 </html>
