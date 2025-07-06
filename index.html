@@ -5,29 +5,82 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>SKANdalous AI – DEATHWISH</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      background: radial-gradient(ellipse at center, #0d0d0d 0%, #000000 100%);
+      font-family: 'Courier New', monospace;
+    }
+    .glitch-text {
+      position: relative;
+      color: #ff007f;
+    }
+    .glitch-text::after {
+      content: attr(data-text);
+      position: absolute;
+      left: 2px;
+      top: 0;
+      color: #00fff7;
+      z-index: -1;
+      animation: glitch 2s infinite linear alternate-reverse;
+    }
+    @keyframes glitch {
+      0% { transform: translate(0, 0); }
+      20% { transform: translate(-1px, 1px); }
+      40% { transform: translate(-1px, -1px); }
+      60% { transform: translate(1px, 1px); }
+      80% { transform: translate(1px, -1px); }
+      100% { transform: translate(0, 0); }
+    }
+    .glow-button {
+      background: linear-gradient(90deg, #ff007f, #c500f9);
+      box-shadow: 0 0 20px #ff007f;
+    }
+    .glow-button:hover {
+      box-shadow: 0 0 40px #ff00cc;
+    }
+  </style>
 </head>
-<body class="bg-black text-white font-sans">
+<body class="text-white">
 
   <!-- HERO SECTION -->
   <section class="min-h-screen flex flex-col items-center justify-center text-center px-6 py-20">
     <img src="https://i.postimg.cc/W4KjvgJ6/skandalous-logo.png" alt="SKANdalous Logo" class="w-24 mb-6">
-    <h1 class="text-5xl md:text-6xl font-bold leading-tight mb-6">$7. 7 Dares. One Life Rewritten.</h1>
+    <h1 class="text-4xl md:text-5xl font-extrabold leading-tight mb-4 glitch-text" data-text="$7. 7 Dares. One Life Rewritten.">$7. 7 Dares. One Life Rewritten.</h1>
     <p class="text-lg md:text-xl text-gray-300 max-w-2xl mx-auto">
       Join the world’s most savage internet cult. No motivation. No mercy. Just proof.
     </p>
     <button onclick="document.getElementById('modal').classList.remove('hidden')" 
-            class="mt-10 px-8 py-4 bg-white text-black font-bold rounded-full text-lg hover:bg-gray-200 transition">
+            class="glow-button inline-block mt-10 px-8 py-4 text-black font-bold rounded-full text-lg transition">
       Join Deathwish Now
     </button>
     <p class="mt-4 text-sm text-gray-400 italic">One dare a day. No refunds. No repeats.</p>
   </section>
 
+  <!-- WHAT IS DEATHWISH -->
+  <section class="py-24 px-6 bg-gray-900 text-center">
+    <h2 class="text-3xl font-bold mb-4">What is DEATHWISH?</h2>
+    <p class="max-w-2xl mx-auto text-gray-300 text-lg">
+      A dopamine-fueled identity shakeup. 7 days. 7 high-stakes dares. You prove it with content. We track it.
+      You fail = exile. You win = you cash in.
+    </p>
+  </section>
+
+  <!-- WHAT YOU GET -->
+  <section class="py-24 px-6 bg-black text-center">
+    <h2 class="text-3xl font-bold mb-8">You Get:</h2>
+    <div class="grid md:grid-cols-3 gap-10 max-w-5xl mx-auto text-left">
+      <div><h3 class="text-xl font-semibold mb-2">🔥 Daily Dares</h3><p>One chaos-infused challenge daily. Designed to disrupt your routine & feed the algorithm.</p></div>
+      <div><h3 class="text-xl font-semibold mb-2">🏆 $1 Club Entry</h3><p>Turn proof into cash. Submit your dare, win $1 daily, earn your place on the leaderboard.</p></div>
+      <div><h3 class="text-xl font-semibold mb-2">💀 Cult Discord</h3><p>Get access to the private cult. Weekly chaos, live shoutouts, and no boring people allowed.</p></div>
+    </div>
+  </section>
+
   <!-- MODAL -->
-  <div id="modal" class="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50 hidden">
+  <div id="modal" class="fixed inset-0 bg-black bg-opacity-90 flex items-center justify-center z-50 hidden">
     <div class="bg-gray-900 rounded-xl shadow-xl w-[90%] max-w-3xl p-6 relative">
       <button onclick="document.getElementById('modal').classList.add('hidden')" 
-              class="absolute top-4 right-4 text-white text-2xl">&times;</button>
-      <h2 class="text-2xl font-bold mb-4">Welcome to the Ritual</h2>
+              class="absolute top-4 right-4 text-white text-3xl font-bold hover:text-pink-500">&times;</button>
+      <h2 class="text-2xl font-bold mb-4">Your ritual begins now</h2>
       <iframe src="https://tally.so/r/wAR7bl" loading="lazy" width="100%" height="500" frameborder="0" title="Join Deathwish"></iframe>
     </div>
   </div>
