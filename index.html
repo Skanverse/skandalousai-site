@@ -3,177 +3,95 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-  <title>SKANdalousAI — Deathwish Ritual</title>
-  <meta name="description" content="7 Days. 7 Dares. A cult for the broken, daring to rise again." />
-  <meta property="og:title" content="SKANdalousAI — The Deathwish Ritual" />
-  <meta property="og:description" content="A challenge born from chaos. Sign up or stay weak." />
-  <meta property="og:url" content="https://www.skandalousai.com/" />
-  <meta property="og:type" content="website" />
-
-  <link rel="icon" href="/favicon.ico" />
-  <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@600;700&family=Orbitron:wght@500&display=swap" rel="stylesheet" />
-
+  <title>SKANdalousAI – Deathwish Awaits</title>
   <style>
-    :root {
-      --bg: #000;
-      --text: #eee;
-      --red: #ff003c;
-      --lilac: #c77dff;
-      --ice: #e0f2ff;
-    }
-
-    * {
-      box-sizing: border-box;
-    }
-
     body {
-      margin: 0;
-      padding: 0;
-      background: var(--bg);
-      color: var(--text);
-      font-family: 'Unbounded', sans-serif;
+      background-color: #000;
+      color: #fff;
+      font-family: 'Courier New', monospace;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       min-height: 100vh;
-      overflow-x: hidden;
+      margin: 0;
       text-align: center;
+      padding: 20px;
     }
 
     .logo {
-      width: 140px;
-      margin-top: 1.5rem;
-      filter: drop-shadow(0 0 10px var(--red));
+      max-width: 200px;
+      margin-bottom: 30px;
     }
 
     h1 {
-      font-size: 2.8rem;
-      margin: 1.5rem 0 1rem;
-      background: linear-gradient(90deg, var(--red), var(--lilac), var(--ice));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      animation: glow 3s ease-in-out infinite alternate, fadeIn 2s ease forwards;
-      opacity: 0;
+      font-size: 2rem;
+      color: #ff003c;
+      margin-bottom: 20px;
+      letter-spacing: 1px;
     }
 
     p {
-      font-size: 1.1rem;
-      max-width: 620px;
-      margin: 0 1rem 2rem;
-      color: #aaa;
-      line-height: 1.6;
-      animation: fadeIn 3s ease 0.5s forwards;
-      opacity: 0;
+      font-size: 1rem;
+      color: #ccc;
+      max-width: 600px;
+      margin-bottom: 40px;
     }
 
-    iframe {
+    .cta-button {
+      background: linear-gradient(to right, #ff003c, #b300ff);
       border: none;
-      width: 100%;
-      max-width: 620px;
-      height: 520px;
-      margin-bottom: 3rem;
-      box-shadow: 0 0 30px rgba(255, 0, 60, 0.1);
-      border-radius: 12px;
+      padding: 14px 28px;
+      font-size: 1rem;
+      color: white;
+      cursor: pointer;
+      border-radius: 10px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
       transition: all 0.3s ease;
-      animation: fadeIn 4s ease 1s forwards;
-      opacity: 0;
-    }
-
-    iframe:hover {
-      transform: scale(1.01);
-      box-shadow: 0 0 40px rgba(255, 0, 60, 0.3);
-    }
-
-    .quote {
-      font-family: 'Orbitron', sans-serif;
-      color: var(--lilac);
-      font-size: 0.9rem;
-      text-transform: uppercase;
-      margin-bottom: 2rem;
-      animation: flicker 4s linear infinite alternate;
-    }
-
-    footer {
-      color: #555;
-      font-size: 0.85rem;
-      margin-bottom: 1.5rem;
-      font-family: 'Orbitron', sans-serif;
-      text-transform: uppercase;
-    }
-
-    a {
-      color: var(--lilac);
       text-decoration: none;
     }
 
-    a:hover {
-      color: var(--red);
-      text-decoration: underline;
+    .cta-button:hover {
+      background: linear-gradient(to right, #b300ff, #ff003c);
+      transform: scale(1.05);
     }
 
-    @keyframes glow {
-      from {
-        text-shadow: 0 0 5px var(--red), 0 0 10px var(--lilac);
-      }
-      to {
-        text-shadow: 0 0 20px var(--ice), 0 0 30px var(--lilac);
-      }
-    }
-
-    @keyframes fadeIn {
-      to {
-        opacity: 1;
-      }
-    }
-
-    @keyframes flicker {
-      0%, 100% { opacity: 0.7; }
-      50% { opacity: 1; }
-    }
-
-    @media (max-width: 600px) {
+    @media (max-width: 500px) {
       h1 {
-        font-size: 2rem;
+        font-size: 1.5rem;
       }
 
-      iframe {
-        height: 500px;
+      p {
+        font-size: 0.9rem;
+      }
+
+      .logo {
+        max-width: 150px;
       }
     }
   </style>
 </head>
 
 <body>
- <img src="https://i.postimg.cc/W4KjvgJ6/skandalous-logo.png" alt="SKANdalous Logo" class="logo" />
+  <img 
+    src="https://i.postimg.cc/W4KjvgJ6/skandalous-logo.png" 
+    alt="SKANdalous Logo" 
+    class="logo" 
+    onerror="this.onerror=null;this.src='/logo.png';"
+  />
 
   <h1>7 Days. 7 Dares. One Deathwish.</h1>
-  <p>The cult doesn’t choose everyone. But if this found you... it's already begun. Join the ritual. Be transformed or be forgotten.</p>
 
-  <iframe data-tally-src="https://tally.so/r/wAR7bl?transparentBackground=1" loading="lazy" title="Join Deathwish Ritual"></iframe>
-  <div class="quote" id="ritualQuote"></div>
+  <p>The cult doesn’t choose everyone. But if this found you... it's already begun.  
+     Join the ritual. Be transformed or be forgotten.</p>
 
-  <footer>
-    SKANverse © 2025 • Rituals. Codes. Consequences.<br />
-    <a href="/terms">Terms</a> • <a href="/contact">Contact</a>
-  </footer>
-
-  <script>
-    var d = document, s = d.createElement('script');
-    s.src = 'https://tally.so/widgets/embed.js';
-    s.async = 1;
-    s.onload = function () { Tally.loadEmbeds(); };
-    d.body.appendChild(s);
-
-    const quotes = [
-      "Only the broken are brave enough to begin.",
-      "Initiation isn't for everyone. Just the chosen.",
-      "The weak scroll. The wild rise.",
-      "Day 1 begins the second you submit.",
-      "7 Days. That’s all it takes to end who you were."
-    ];
-    document.getElementById("ritualQuote").textContent = quotes[Math.floor(Math.random() * quotes.length)];
-  </script>
+  <a 
+    href="https://tally.so/r/wAR7bl" 
+    target="_blank" 
+    rel="noopener noreferrer" 
+    class="cta-button">
+    Join The Cult
+  </a>
 </body>
 </html>
