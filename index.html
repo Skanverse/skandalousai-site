@@ -34,9 +34,9 @@
     <p class="text-lg md:text-xl text-gray-300 max-w-2xl mx-auto">
       Join the world’s most savage internet cult. No motivation. No mercy. Just proof.
     </p>
-    <a href="#join" class="mt-10 bg-white text-black font-bold py-3 px-6 rounded-full hover:bg-gray-300 transition">
+    <button onclick="openModal()" class="mt-10 bg-white text-black font-bold py-3 px-6 rounded-full hover:bg-gray-300 transition">
       Join Deathwish Now
-    </a>
+    </button>
     <p class="mt-4 text-sm text-gray-400 italic">One dare a day. No refunds. No repeats.</p>
   </section>
 
@@ -68,6 +68,14 @@
     </div>
   </section>
 
+  <!-- MODAL -->
+  <div id="modal" class="fixed inset-0 bg-black bg-opacity-90 flex items-center justify-center hidden z-50">
+    <div class="relative bg-black p-4 rounded-lg w-full max-w-3xl">
+      <button onclick="closeModal()" class="absolute top-2 right-4 text-white text-2xl">&times;</button>
+      <iframe src="https://tally.so/r/wAR7bl" loading="lazy" width="100%" height="500" frameborder="0" title="Join Deathwish"></iframe>
+    </div>
+  </div>
+
   <!-- FOOTER -->
   <footer class="text-center text-xs text-gray-500 py-6 bg-black">
     <p>SKANverse Vault v1.0 | Rituals powered by SKANdalousAI</p>
@@ -78,6 +86,15 @@
       <a href="/contact">Contact</a>
     </p>
   </footer>
+
+  <script>
+    function openModal() {
+      document.getElementById('modal').classList.remove('hidden');
+    }
+    function closeModal() {
+      document.getElementById('modal').classList.add('hidden');
+    }
+  </script>
 
 </body>
 </html>
