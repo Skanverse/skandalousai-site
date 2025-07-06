@@ -4,84 +4,128 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>SKANdalousAI – 7-Day Deathwish Ritual</title>
-  <meta name="description" content="7-day deathwish ritual for the broken. Dare accepted or peace denied.">
+  <title>SKANdalousAI — Deathwish Ritual</title>
+  <meta name="description" content="7 Days. 7 Dares. A cult for the broken, daring to rise again." />
   <meta property="og:title" content="SKANdalousAI — The Deathwish Ritual" />
-  <meta property="og:description" content="A cult-born challenge for the ones who lost everything but pain. Enter or perish." />
+  <meta property="og:description" content="A challenge born from chaos. Sign up or stay weak." />
   <meta property="og:url" content="https://www.skandalousai.com/" />
   <meta property="og:type" content="website" />
 
-  <!-- Favicon + Fonts (optional) -->
   <link rel="icon" href="/favicon.ico" />
-  <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@600;700&family=Orbitron:wght@500&display=swap" rel="stylesheet" />
 
-  <!-- Styles -->
   <style>
+    :root {
+      --bg: #000;
+      --text: #eee;
+      --red: #ff003c;
+      --lilac: #c77dff;
+      --ice: #e0f2ff;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       margin: 0;
       padding: 0;
-      background-color: #000;
-      color: #fff;
+      background: var(--bg);
+      color: var(--text);
       font-family: 'Unbounded', sans-serif;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       min-height: 100vh;
+      overflow-x: hidden;
       text-align: center;
     }
 
     .logo {
-      max-width: 160px;
-      margin-top: 2rem;
+      width: 140px;
+      margin-top: 1.5rem;
+      filter: drop-shadow(0 0 10px var(--red));
     }
 
     h1 {
-      font-size: 2.5rem;
-      margin: 1rem 0;
-      color: #ff003c;
+      font-size: 2.8rem;
+      margin: 1.5rem 0 1rem;
+      background: linear-gradient(90deg, var(--red), var(--lilac), var(--ice));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: glow 3s ease-in-out infinite alternate;
+    }
+
+    @keyframes glow {
+      from {
+        text-shadow: 0 0 5px var(--red), 0 0 10px var(--lilac);
+      }
+      to {
+        text-shadow: 0 0 20px var(--ice), 0 0 30px var(--lilac);
+      }
     }
 
     p {
-      font-size: 1.2rem;
-      max-width: 600px;
-      margin-bottom: 2rem;
-      color: #ccc;
+      font-size: 1.1rem;
+      max-width: 620px;
+      margin: 0 1rem 2rem;
+      color: #aaa;
+      line-height: 1.6;
     }
 
     iframe {
       border: none;
       width: 100%;
-      max-width: 600px;
+      max-width: 620px;
       height: 520px;
       margin-bottom: 3rem;
+      box-shadow: 0 0 30px rgba(255, 0, 60, 0.1);
+      border-radius: 12px;
+      transition: all 0.3s ease;
+    }
+
+    iframe:hover {
+      transform: scale(1.01);
+      box-shadow: 0 0 40px rgba(255, 0, 60, 0.3);
     }
 
     footer {
-      color: #666;
-      font-size: 0.9rem;
-      margin-bottom: 2rem;
+      color: #555;
+      font-size: 0.85rem;
+      margin-bottom: 1.5rem;
+      font-family: 'Orbitron', sans-serif;
+      text-transform: uppercase;
     }
 
     a {
-      color: #ff4d6d;
+      color: var(--lilac);
       text-decoration: none;
     }
 
     a:hover {
+      color: var(--red);
       text-decoration: underline;
+    }
+
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 2rem;
+      }
+
+      iframe {
+        height: 500px;
+      }
     }
   </style>
 </head>
+
 <body>
-  <!-- 🔥 SKANdalous Logo -->
   <img src="/logo.png" alt="SKANdalous Logo" class="logo" />
 
-  <!-- 🩸 Headline -->
   <h1>7 Days. 7 Dares. One Deathwish.</h1>
-  <p>Welcome to the ritual. Enter your name, email, and code. If you survive all 7 dares, a reward awaits. Or not.</p>
+  <p>The cult doesn’t choose everyone. But if this found you... it's already begun. Join the ritual. Be transformed or be forgotten.</p>
 
-  <!-- 🧾 Tally Embed -->
   <iframe data-tally-src="https://tally.so/r/wAR7bl?transparentBackground=1" loading="lazy" title="Join Deathwish Ritual"></iframe>
   <script>
     var d = document, s = d.createElement('script');
@@ -91,10 +135,9 @@
     d.body.appendChild(s);
   </script>
 
-  <!-- 🧃 Footer -->
   <footer>
-    Made with <span style="color: #ff003c;">blood</span> by the SKANverse cult.<br />
-    <a href="/terms" target="_blank">Terms & Conditions</a> • <a href="/contact" target="_blank">Contact</a>
+    SKANverse © 2025 • Rituals. Codes. Consequences.<br />
+    <a href="/terms">Terms</a> • <a href="/contact">Contact</a>
   </footer>
 </body>
 </html>
