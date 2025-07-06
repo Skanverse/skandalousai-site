@@ -54,16 +54,8 @@
       background: linear-gradient(90deg, var(--red), var(--lilac), var(--ice));
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      animation: glow 3s ease-in-out infinite alternate;
-    }
-
-    @keyframes glow {
-      from {
-        text-shadow: 0 0 5px var(--red), 0 0 10px var(--lilac);
-      }
-      to {
-        text-shadow: 0 0 20px var(--ice), 0 0 30px var(--lilac);
-      }
+      animation: glow 3s ease-in-out infinite alternate, fadeIn 2s ease forwards;
+      opacity: 0;
     }
 
     p {
@@ -72,6 +64,8 @@
       margin: 0 1rem 2rem;
       color: #aaa;
       line-height: 1.6;
+      animation: fadeIn 3s ease 0.5s forwards;
+      opacity: 0;
     }
 
     iframe {
@@ -83,11 +77,22 @@
       box-shadow: 0 0 30px rgba(255, 0, 60, 0.1);
       border-radius: 12px;
       transition: all 0.3s ease;
+      animation: fadeIn 4s ease 1s forwards;
+      opacity: 0;
     }
 
     iframe:hover {
       transform: scale(1.01);
       box-shadow: 0 0 40px rgba(255, 0, 60, 0.3);
+    }
+
+    .quote {
+      font-family: 'Orbitron', sans-serif;
+      color: var(--lilac);
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      margin-bottom: 2rem;
+      animation: flicker 4s linear infinite alternate;
     }
 
     footer {
@@ -106,6 +111,26 @@
     a:hover {
       color: var(--red);
       text-decoration: underline;
+    }
+
+    @keyframes glow {
+      from {
+        text-shadow: 0 0 5px var(--red), 0 0 10px var(--lilac);
+      }
+      to {
+        text-shadow: 0 0 20px var(--ice), 0 0 30px var(--lilac);
+      }
+    }
+
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+      }
+    }
+
+    @keyframes flicker {
+      0%, 100% { opacity: 0.7; }
+      50% { opacity: 1; }
     }
 
     @media (max-width: 600px) {
@@ -127,17 +152,28 @@
   <p>The cult doesn’t choose everyone. But if this found you... it's already begun. Join the ritual. Be transformed or be forgotten.</p>
 
   <iframe data-tally-src="https://tally.so/r/wAR7bl?transparentBackground=1" loading="lazy" title="Join Deathwish Ritual"></iframe>
+  <div class="quote" id="ritualQuote"></div>
+
+  <footer>
+    SKANverse © 2025 • Rituals. Codes. Consequences.<br />
+    <a href="/terms">Terms</a> • <a href="/contact">Contact</a>
+  </footer>
+
   <script>
     var d = document, s = d.createElement('script');
     s.src = 'https://tally.so/widgets/embed.js';
     s.async = 1;
     s.onload = function () { Tally.loadEmbeds(); };
     d.body.appendChild(s);
-  </script>
 
-  <footer>
-    SKANverse © 2025 • Rituals. Codes. Consequences.<br />
-    <a href="/terms">Terms</a> • <a href="/contact">Contact</a>
-  </footer>
+    const quotes = [
+      "Only the broken are brave enough to begin.",
+      "Initiation isn't for everyone. Just the chosen.",
+      "The weak scroll. The wild rise.",
+      "Day 1 begins the second you submit.",
+      "7 Days. That’s all it takes to end who you were."
+    ];
+    document.getElementById("ritualQuote").textContent = quotes[Math.floor(Math.random() * quotes.length)];
+  </script>
 </body>
 </html>
