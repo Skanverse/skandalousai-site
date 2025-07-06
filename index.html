@@ -2,94 +2,99 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>SKANdalousAI — 7‑Day Identity Possession</title>
-  <meta name="description" content="Enter Deathwish — a 7‑day ritual that burns your ego in public, forces you to ship ugly and lets chaos pay your rent."/>
-  <link rel="canonical" href="https://www.skandalousai.com/"/>
-  <!--  Open‑Graph  -->
-  <meta property="og:type" content="website" />
-  <meta property="og:title" content="7‑Day Identity Possession — SKANdalousAI" />
-  <meta property="og:description" content="Enter Deathwish — a week‑long ritual where we burn your ego in public, force you to ship ugly and let chaos pay your rent." />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>SKANdalousAI – 7-Day Deathwish Ritual</title>
+  <meta name="description" content="7-day deathwish ritual for the broken. Dare accepted or peace denied.">
+  <meta property="og:title" content="SKANdalousAI — The Deathwish Ritual" />
+  <meta property="og:description" content="A cult-born challenge for the ones who lost everything but pain. Enter or perish." />
   <meta property="og:url" content="https://www.skandalousai.com/" />
-  <meta property="og:image" content="https://www.skandalousai.com/og-image.png" />
-  <meta name="twitter:card" content="summary_large_image" />
+  <meta property="og:type" content="website" />
 
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@300;400;700&display=swap" rel="stylesheet" />
+  <!-- Favicon + Fonts (optional) -->
+  <link rel="icon" href="/favicon.ico" />
+  <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@600;700&display=swap" rel="stylesheet" />
 
+  <!-- Styles -->
   <style>
-    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-    html{scroll-behavior:smooth}
-    body{font-family:'Inter',sans-serif;font-weight:300;background:#000;color:#fff;line-height:1.5;-webkit-font-smoothing:antialiased}
-    a{color:#ff3d3d;text-decoration:none}
-    h1,h2,h3{font-family:'Playfair Display',serif;font-weight:900;letter-spacing:-.5px}
-    h1{font-size:clamp(2.5rem,5vw,4rem);line-height:1.1}
-    h2{font-size:2rem;margin-top:3rem}
-    p{margin:1rem 0;font-size:1.05rem;color:#d1d1d1;font-weight:400}
-    .container{width:min(90%,1100px);margin-inline:auto;padding:4rem 0}
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #000;
+      color: #fff;
+      font-family: 'Unbounded', sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      text-align: center;
+    }
 
-    .site-logo{position:fixed;top:1rem;left:1rem;z-index:50;width:52px;aspect-ratio:1/1;filter:drop-shadow(0 0 6px #ff3d3d90);transition:transform .25s}
-    .site-logo:hover{transform:scale(1.08)}
+    .logo {
+      max-width: 160px;
+      margin-top: 2rem;
+    }
 
-    .hero{display:flex;flex-direction:column;align-items:center;text-align:center;gap:2rem;padding:6rem 0}
-    .glitch{position:relative;color:#fff}
-    .glitch:before,.glitch:after{content:attr(data-text);position:absolute;top:0;left:0;width:100%;opacity:.8}
-    .glitch:before{left:2px;text-shadow:-2px 0 #ff3d3d;animation:glitch 2s infinite linear alternate-reverse}
-    .glitch:after{left:-2px;text-shadow:-2px 0 #b36bff;animation:glitch 1.5s infinite linear alternate-reverse}
-    @keyframes glitch{0%{clip-path:inset(0 0 90% 0)}20%{clip-path:inset(15% 0 70% 0)}40%{clip-path:inset(50% 0 30% 0)}60%{clip-path:inset(80% 0 5% 0)}80%{clip-path:inset(30% 0 55% 0)}100%{clip-path:inset(0 0 90% 0)}}
+    h1 {
+      font-size: 2.5rem;
+      margin: 1rem 0;
+      color: #ff003c;
+    }
 
-    .cta-btn{display:inline-block;background:#ff3d3d;color:#fff;padding:.95rem 2rem;border-radius:8px;font-weight:700;box-shadow:0 0 8px #ff3d3d90;transition:transform .3s,box-shadow .3s}
-    .cta-btn:hover{transform:translateY(-4px);box-shadow:0 0 14px #ff3d3d}
+    p {
+      font-size: 1.2rem;
+      max-width: 600px;
+      margin-bottom: 2rem;
+      color: #ccc;
+    }
 
-    .grid{display:grid;gap:2rem}
-    .three-col{grid-template-columns:repeat(auto-fit,minmax(300px,1fr));justify-items:center}
-    .card{background:#111;border:1px solid #333;border-radius:16px;padding:2rem;text-align:center;transition:background .3s}
-    .card h3{margin-bottom:.5rem}
-    .card:hover{background:linear-gradient(135deg,#111 0%,#1a1a1a 45%,#111 100%)}
+    iframe {
+      border: none;
+      width: 100%;
+      max-width: 600px;
+      height: 520px;
+      margin-bottom: 3rem;
+    }
 
-    footer{padding:4rem 0;border-top:1px solid #111;text-align:center;font-size:.85rem;color:#777}
-    @media(max-width:600px){h1{font-size:2.25rem}}
+    footer {
+      color: #666;
+      font-size: 0.9rem;
+      margin-bottom: 2rem;
+    }
+
+    a {
+      color: #ff4d6d;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
   </style>
-
-  <!-- Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-4TB0RV74D6"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date()); gtag('config', 'G-4TB0RV74D6');
-  </script>
 </head>
 <body>
+  <!-- 🔥 SKANdalous Logo -->
+  <img src="/logo.png" alt="SKANdalous Logo" class="logo" />
 
-  <!-- Logo -->
-  <a href="/" class="site-logo"><img src="skandalous-logo.png" alt="SKAN logo" style="width:100%;height:100%"></a>
+  <!-- 🩸 Headline -->
+  <h1>7 Days. 7 Dares. One Deathwish.</h1>
+  <p>Welcome to the ritual. Enter your name, email, and code. If you survive all 7 dares, a reward awaits. Or not.</p>
 
-  <!-- Hero -->
-  <section class="hero container">
-    <h1 class="glitch" data-text="7‑DAY IDENTITY POSSESSION">7‑DAY IDENTITY POSSESSION</h1>
-    <p>Enter <strong>Deathwish</strong> — a week‑long ritual where we burn your ego <em>in public</em>, force you to ship ugly, and let chaos pay your rent.</p>
-    <p id="souls">⛧ Your soul is now on record. No turning back.</p>
-    <a href="https://pledgeletter.beehiiv.com/subscribe?utm_source=skandalousai&utm_medium=homepage&utm_campaign=deathwish_signup" class="cta-btn" target="_blank">
-      Start the Deathwish 🔥
-    </a>
-  </section>
+  <!-- 🧾 Tally Embed -->
+  <iframe data-tally-src="https://tally.so/r/wAR7bl?transparentBackground=1" loading="lazy" title="Join Deathwish Ritual"></iframe>
+  <script>
+    var d = document, s = d.createElement('script');
+    s.src = 'https://tally.so/widgets/embed.js';
+    s.async = 1;
+    s.onload = function () { Tally.loadEmbeds(); };
+    d.body.appendChild(s);
+  </script>
 
-  <!-- What You Get -->
-  <section class="container" id="whatYouGet">
-    <h2>What You Get in 7 Days</h2>
-    <div class="grid three-col">
-      <div class="card"><h3>Dare Pack</h3><p>7 ego‑crushing tasks delivered daily to your inbox at 9 AM ET.</p></div>
-      <div class="card"><h3>Proof Ritual</h3><p>Upload your chaos receipts to the cult wall for instant dopamine &amp; social clout.</p></div>
-      <div class="card"><h3>Digital Rebirth</h3><p>Walk out with a new persona, audience momentum, and your first $ earned.</p></div>
-    </div>
-  </section>
-
-  <!-- Footer -->
+  <!-- 🧃 Footer -->
   <footer>
-    <p>&copy; 2025 SKANverse Inc. • Built in chaos • <a href="#">Cult Lore</a> • <a href="#">Terms</a></p>
+    Made with <span style="color: #ff003c;">blood</span> by the SKANverse cult.<br />
+    <a href="/terms" target="_blank">Terms & Conditions</a> • <a href="/contact" target="_blank">Contact</a>
   </footer>
-
 </body>
 </html>
