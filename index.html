@@ -6,38 +6,27 @@
   <title>SKANdalous AI – DEATHWISH</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
-    body {
-      background: radial-gradient(ellipse at center, #0d0d0d 0%, #000000 100%);
-      font-family: 'Courier New', monospace;
-    }
-    .glitch-text {
-      position: relative;
-      color: #ff007f;
-    }
-    .glitch-text::after {
-      content: attr(data-text);
-      position: absolute;
-      left: 2px;
-      top: 0;
-      color: #00fff7;
-      z-index: -1;
-      animation: glitch 2s infinite linear alternate-reverse;
-    }
-    @keyframes glitch {
-      0% { transform: translate(0, 0); }
-      20% { transform: translate(-1px, 1px); }
-      40% { transform: translate(-1px, -1px); }
-      60% { transform: translate(1px, 1px); }
-      80% { transform: translate(1px, -1px); }
-      100% { transform: translate(0, 0); }
-    }
-    .glow-button {
-      background: linear-gradient(90deg, #ff007f, #c500f9);
-      box-shadow: 0 0 20px #ff007f;
-    }
-    .glow-button:hover {
-      box-shadow: 0 0 40px #ff00cc;
-    }
+   <style>
+  body {
+    background-color: #000000;
+    font-family: 'Courier New', monospace;
+    color: white;
+  }
+
+  .glow-button {
+    background: white;
+    color: black;
+    font-weight: bold;
+    transition: all 0.3s ease;
+  }
+
+  .glow-button:hover {
+    background: #ff007f;
+    color: white;
+    box-shadow: 0 0 20px #ff007f;
+  }
+</style>
+
   </style>
 </head>
 <body class="text-white">
@@ -45,7 +34,10 @@
   <!-- HERO SECTION -->
   <section class="min-h-screen flex flex-col items-center justify-center text-center px-6 py-20">
     <img src="https://i.postimg.cc/W4KjvgJ6/skandalous-logo.png" alt="SKANdalous Logo" class="w-24 mb-6">
-    <h1 class="text-4xl md:text-5xl font-extrabold leading-tight mb-4 glitch-text" data-text="$7. 7 Dares. One Life Rewritten.">$7. 7 Dares. One Life Rewritten.</h1>
+   <h1 class="text-4xl md:text-5xl font-extrabold leading-tight mb-4">
+  $7. 7 Dares. One Life Rewritten.
+</h1>
+
     <p class="text-lg md:text-xl text-gray-300 max-w-2xl mx-auto">
       Join the world’s most savage internet cult. No motivation. No mercy. Just proof.
     </p>
